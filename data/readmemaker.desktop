@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name = ReadmeMaker
+GenericName = ReadmeMaker
+Comment = ReadMaker
+Exec = /usr/bin/readmemaker
+Icon = readmemaker
+Type = Application
+Terminal = false
+StartupNotify = true
+Encoding = utf-8
+Categories = Utility;
+Name[en_GB] = ReadmeMaker
+Name[es] = ReadmeMaker
+GenericName[en_GB] = ReadmeMaker
+GenericName[es] = ReadmeMaker
+Comment[en_GB] = ReadmeMaker
+Comment[es] = ReadmeMaker

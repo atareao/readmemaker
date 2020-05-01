@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-01 10:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/box_general.py:52
+msgid "Project name:"
+msgstr ""
+
+#: src/box_general.py:60
+msgid "License:"
+msgstr ""
+
+#: src/box_general.py:66
+msgid "MIT"
+msgstr ""
+
+#: src/box_general.py:67
+msgid "GPL"
+msgstr ""
+
+#: src/box_general.py:77
+msgid "Icon:"
+msgstr ""
+
+#: src/box_general.py:88
+msgid "Icon"
+msgstr ""
+
+#: src/box_general.py:93
+msgid "Homepage:"
+msgstr ""
+
+#: src/box_general.py:115
+msgid "License"
+msgstr ""
+
+#: src/main.py:45
+msgid "Create README"
+msgstr ""
+
+#: src/main.py:56
+msgid "General"
+msgstr ""
+
+#: src/main.py:58
+msgid "Description:"
+msgstr ""
+
+#: src/main.py:60
+msgid "Description"
+msgstr ""
+
+#: src/main.py:62 src/box_dependencies.py:53
+msgid "Dependencies:"
+msgstr ""
+
+#: src/main.py:64
+msgid "Dependencies"
+msgstr ""

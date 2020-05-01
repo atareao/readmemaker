@@ -1,0 +1,221 @@
+# Language * translations for tasker package.
+# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the tasker package.
+# Lorenzo <lorenzo.carbonell.cerezo@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tasker - 0.1.0-0extras19.10.11\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-01 10:42+0200\n"
+"PO-Revision-Date: 2020-03-04 18:31+0100\n"
+"Last-Translator: Lorenzo <lorenzo.carbonell.cerezo@gmail.com>\n"
+"Language-Team: Language *\n"
+"Language: *\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/box_general.py:52
+msgid "Project name:"
+msgstr "Nombre del proyecto:"
+
+#: src/box_general.py:60
+msgid "License:"
+msgstr ""
+
+#: src/box_general.py:66
+msgid "MIT"
+msgstr ""
+
+#: src/box_general.py:67
+msgid "GPL"
+msgstr ""
+
+#: src/box_general.py:77
+msgid "Icon:"
+msgstr ""
+
+#: src/box_general.py:88
+msgid "Icon"
+msgstr ""
+
+#: src/box_general.py:93
+#, fuzzy
+msgid "Homepage:"
+msgstr "Homepage"
+
+#: src/box_general.py:115
+msgid "License"
+msgstr ""
+
+#: src/main.py:45
+msgid "Create README"
+msgstr ""
+
+#: src/main.py:56
+msgid "General"
+msgstr "General"
+
+#: src/main.py:58
+msgid "Description:"
+msgstr ""
+
+#: src/main.py:60
+msgid "Description"
+msgstr ""
+
+#: src/main.py:62 src/box_dependencies.py:53
+msgid "Dependencies:"
+msgstr ""
+
+#: src/main.py:64
+msgid "Dependencies"
+msgstr ""
+
+#~ msgid "Preferences"
+#~ msgstr "Preferencias"
+
+#~ msgid "Theme light:"
+#~ msgstr "Tema claro"
+
+#~ msgid "Autostart"
+#~ msgstr "Autoinicio"
+
+#~ msgid "Number of tasks in menu:"
+#~ msgstr "Número de tareas en el menú:"
+
+#~ msgid "Todo file:"
+#~ msgstr "Archivo Todo:"
+
+#~ msgid "Todo file"
+#~ msgstr "Archivo Todo"
+
+#~ msgid "Projects"
+#~ msgstr "Proyectos"
+
+#~ msgid "Add project"
+#~ msgstr "Añadir Proyecto"
+
+#~ msgid "Remove project"
+#~ msgstr "Borrar proyecto"
+
+#~ msgid "Contexts"
+#~ msgstr "Contextos"
+
+#~ msgid "Add context"
+#~ msgstr "Añadir contexto"
+
+#~ msgid "Remove context"
+#~ msgstr "Borrar contexto"
+
+#~ msgid "Tags"
+#~ msgstr "Etiquetas"
+
+#~ msgid "Add tag"
+#~ msgstr "Añadir etiqueta"
+
+#~ msgid "Remove tag"
+#~ msgstr "Eliminar etiqueta"
+
+#~ msgid "List of tasks"
+#~ msgstr "Lista de tareas"
+
+#~ msgid "Filter tasks"
+#~ msgstr "Filtrar tareas"
+
+#~ msgid "Priority:"
+#~ msgstr "Prioridad:"
+
+#~ msgid "Select project:"
+#~ msgstr "Selecciona proyecto:"
+
+#~ msgid "Select context:"
+#~ msgstr "Selecciona contexto:"
+
+#~ msgid "Add task"
+#~ msgstr "Añadir tarea"
+
+#~ msgid "Edit task"
+#~ msgstr "Editar tarea"
+
+#~ msgid "Remove task"
+#~ msgstr "Eliminar tarea"
+
+#~ msgid "Clear tasks"
+#~ msgstr "Limpiar tareas"
+
+#~ msgid "Tasks"
+#~ msgstr "Tareas"
+
+#~ msgid "Help"
+#~ msgstr "Ayuda"
+
+#~ msgid "Quit"
+#~ msgstr "Salir"
+
+#~ msgid "Tasker"
+#~ msgstr "Tasker"
+
+#~ msgid "Tasks statistics"
+#~ msgstr "Estadística de tareas"
+
+#~ msgid "Get help online..."
+#~ msgstr "Consigue ayuda en línea..."
+
+#~ msgid "Translate this application..."
+#~ msgstr "Tradule la aplicación..."
+
+#~ msgid "Report a bug..."
+#~ msgstr "Informa de un error..."
+
+#~ msgid "Found me in Twitter"
+#~ msgstr "En Twitter"
+
+#~ msgid "Found me in GitHub"
+#~ msgstr "En GitHub"
+
+#~ msgid "Found me in Mastodon"
+#~ msgstr "En Mastodon"
+
+#~ msgid "About"
+#~ msgstr "Acerca de..."
+
+#~ msgid "Add Project"
+#~ msgstr "Añadir Proyecto"
+
+#~ msgid "Add Context"
+#~ msgstr "Añadir Contexto"
+
+#~ msgid "Context name:"
+#~ msgstr "Nombre del contexto:"
+
+#~ msgid "Add Tag"
+#~ msgstr "Añadir Etiqueta:"
+
+#~ msgid "Tag name:"
+#~ msgstr "Nombre de la etiqueta:"
+
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgid "Boolean"
+#~ msgstr "Booleano"
+
+#~ msgid "Date"
+#~ msgstr "Fecha"
+
+#~ msgid "String"
+#~ msgstr "Texto"
+
+#~ msgid "Text:"
+#~ msgstr "Texto:"
+
+#~ msgid "Priority"
+#~ msgstr "Prioridad"
+
+#~ msgid "Select project(s):"
+#~ msgstr "Selecciona proyecto(s):"
+
+#~ msgid "Select context(s):"
+#~ msgstr "Selecciona contexto(s):"

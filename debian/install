@@ -1,0 +1,5 @@
+bin /usr
+debian/changelog /usr/share/readmemaker
+src/*.py /usr/share/readmemaker
+data/readmemaker.desktop /usr/share/applications
+data/icons/* /usr/share/icons/hicolor
