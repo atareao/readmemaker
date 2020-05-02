@@ -46,7 +46,7 @@ sudo apt install tasker
 ```
 <!-- end installing -->
 <!-- start using -->
-## Using Tasker
+## Using <span id="title">Title</span>
 
 When you start <strong><span id="title">Title</span></strong> it goes to Indicator Area, as you can see in the next screenshot,
 
@@ -57,7 +57,7 @@ In this screenshot, the language is Spanish, but, if there is no translation for
 You can set some options in order to start  <strong><span id="title">Title</span></strong> when you start your Operative System.
 
 * Set the icon theme. Dark or light.
-* Start Tasker with your Operative System
+* Start <span id="title">Title</span> with your Operative System
 * Set the number of tasks you want to show in the indicator menu
 * Set the tasks files. The file must follow the Todo.txt syntax.
 
@@ -91,9 +91,9 @@ In the next screenshots you can see some samples of my use of *tasker*,
 ![Example 2](./screenshots/screenshot_05.png)
 <!-- end using -->
 <!-- start contributing -->
-## Contributing to Tasker
+## Contributing to <span id="title">Title</span>
 
-To contribute to **Tasker**, follow these steps:
+To contribute to **<span id="title">Title</span>**, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
