@@ -32,6 +32,6 @@ if __name__ == '__main__':
     else:
         sys.path.insert(1, os.path.normpath(
             os.path.join(os.path.dirname(__file__), '../src')))
-    from indicator import main
+    from main import main
     main()
 exit(0)

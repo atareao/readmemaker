@@ -33,7 +33,7 @@ gir1.2-keybinder-3.0
 <!-- end prerequisites -->
 
 <!-- start installing -->
-## Installing ${title}
+## Installing <span id="title">Title</span>
 
 To install <span id="title">Title</span>, follow these steps:
 
@@ -110,10 +110,38 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- end contributors -->
 <!-- start table-contributors -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/flachica"><img src="https://avatars3.githubusercontent.com/u/747459?v=4" width="100px;" alt=""/><br /><sub><b>Fernando</b></sub></a><br /><a href="https://github.com/atareao/tasker/commits?author=flachica" title="Code">💻</a></td>
-    <td align="center"><a href="https://www.atareao.es"><img src="https://avatars3.githubusercontent.com/u/298055?v=4" width="100px;" alt=""/><br /><sub><b>Lorenzo Carbonell</b></sub></a><br /><a href="https://github.com/atareao/tasker/commits?author=atareao" title="Code">💻</a></td>
-  </tr>
+    <tr id="info_avatar">
+        <td id="flachica" align="center">
+            <a href="https://github.com/flachica">
+                <img src="https://avatars3.githubusercontent.com/u/747459?v=4" width="100px;" alt=""/>
+            </a>
+        </td>
+        <td id="atareao" align="center">
+            <a href="https://github.com/atareao">
+                <img src="https://avatars3.githubusercontent.com/u/298055?v=4" width="100px;" alt=""/>
+            </a>
+        </td>
+    </tr>
+    <tr id="info_name">
+        <td id="flachica" align="center">
+            <a href="https://github.com/flachica">
+                <strong>Fernando</strong>
+            </a>
+        </td>
+        <td id="atareao" align="center">
+            <a href="https://github.com/atareao">
+                <strong>Lorenzo</strong>
+            </a>
+        </td>
+    </tr>
+    <tr id="info_commit">
+        <td id="flachica" align="center">
+            <a href="https://github.com/atareao/tasker/commits?author=flachica" title="Code">💻</a>
+        </td>
+        <td id="atareo" align="center">
+            <a href="https://github.com/atareao/tasker/commits?author=atareao" title="Code">💻</a>
+        </td>
+    <tr>
 </table>
 <!-- end table-contributors -->
 

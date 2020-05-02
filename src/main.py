@@ -119,7 +119,11 @@ class ReadmeMaker(BaseDialog):
         return section
 
 
-if __name__ == '__main__':
+def main():
+    """TODO: Docstring for main.
+    :returns: TODO
+
+    """
     readmeMaker = ReadmeMaker()
     response = readmeMaker.run()
     if response == Gtk.ResponseType.ACCEPT:
@@ -127,3 +131,6 @@ if __name__ == '__main__':
         pass
     readmeMaker.destroy()
 
+
+if __name__ == '__main__':
+    main()
