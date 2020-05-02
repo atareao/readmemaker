@@ -1,12 +1,15 @@
-<h1 align="center">Welcome to <span id='title'></span> 👋</h1>
+<h1 align="center">Welcome to <span id="title"></span> 👋</h1>
 
+<!-- start license-badge -->
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
+<!-- end license-badge -->
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3e704c3f150404582cd23b9fcb4be32)](https://www.codacy.com/manual/atareao/tasker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/tasker&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/tasker/badge/master)](https://www.codefactor.io/repository/github/atareao/tasker/overview/master)
 
 [![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
 
-${description}
+<!-- start description -->
+<!-- end description -->
 
 [![tasker](${icon})](${homepage})
 
@@ -29,9 +32,10 @@ gir1.2-keybinder-3.0
 ```
 <!-- end prerequisites -->
 
+<!-- start installing -->
 ## Installing ${title}
 
-To install **${title}**, follow these steps:
+To install <span id="title">Title</span>, follow these steps:
 
 * In a terminal (`Ctrl+Alt+T`), run these commands
 
@@ -40,16 +44,17 @@ sudo add-apt-repository ppa:atareao/atareao
 sudo apt update
 sudo apt install tasker
 ```
-
+<!-- end installing -->
+<!-- start using -->
 ## Using Tasker
 
-When you start **Tasker** it goes to Indicator Area, as you can see in the next screenshot,
+When you start <strong><span id="title">Title</span></strong> it goes to Indicator Area, as you can see in the next screenshot,
 
 ![tasker](./screenshots/screenshot_01.png)
 
 In this screenshot, the language is Spanish, but, if there is no translation for your language, you will find the app in English.
 
-You can set some options in order to start *Tasker* when you start your Operative System.
+You can set some options in order to start  <strong><span id="title">Title</span></strong> when you start your Operative System.
 
 * Set the icon theme. Dark or light.
 * Start Tasker with your Operative System
@@ -84,7 +89,8 @@ In the next screenshots you can see some samples of my use of *tasker*,
 ![Example 1](./screenshots/screenshot_04.png)
 
 ![Example 2](./screenshots/screenshot_05.png)
-
+<!-- end using -->
+<!-- start contributing -->
 ## Contributing to Tasker
 
 To contribute to **Tasker**, follow these steps:
@@ -96,23 +102,18 @@ To contribute to **Tasker**, follow these steps:
 5. Create the pull request.
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-
+<!-- end contributing -->
+<!-- start contributors -->
 ## 👤 Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
+<!-- end contributors -->
+<!-- start table-contributors -->
 <table>
   <tr>
     <td align="center"><a href="https://github.com/flachica"><img src="https://avatars3.githubusercontent.com/u/747459?v=4" width="100px;" alt=""/><br /><sub><b>Fernando</b></sub></a><br /><a href="https://github.com/atareao/tasker/commits?author=flachica" title="Code">💻</a></td>
     <td align="center"><a href="https://www.atareao.es"><img src="https://avatars3.githubusercontent.com/u/298055?v=4" width="100px;" alt=""/><br /><sub><b>Lorenzo Carbonell</b></sub></a><br /><a href="https://github.com/atareao/tasker/commits?author=atareao" title="Code">💻</a></td>
   </tr>
 </table>
+<!-- end table-contributors -->
 
-
-## Contact
-
-If you want to contact me you can reach me at [atareao.es](https://www.atareao.es).
-
-## License
-
-This project uses the following license: [MIT License](https://choosealicense.com/licenses/mit/).

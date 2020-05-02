@@ -30,11 +30,14 @@ except Exception as e:
     print(e)
     exit(-1)
 from gi.repository import Gtk
+import re
+import os
 from config import _
+from config import TEMPLATE
 from basedialog import BaseDialog
 from box_general import BoxGeneral
 from box_text import BoxText
-
+from box_contributors import BoxContributors
 
 class ReadmeMaker(BaseDialog):
 
@@ -55,48 +58,65 @@ class ReadmeMaker(BaseDialog):
         notebook.append_page(self.boxGeneral,
                              Gtk.Label.new(_('General')))
 
-        self.boxDescription = BoxText(_('Description:'))
+        self.boxDescription = BoxText(_('Description:'), True)
         notebook.append_page(self.boxDescription,
                              Gtk.Label.new(_('Description')))
+        description = self.read_section('description', TEMPLATE)
+        self.boxDescription.set_content(description)
 
-        self.boxDependencies = BoxText(_('Prerrequisites:'), True)
+        self.boxDependencies = BoxText(_('Prerequisites:'), True)
         notebook.append_page(self.boxDependencies,
-                             Gtk.Label.new(_('Prerrequisites')))
-        prerrequisites=''' Before you begin, ensure you have met the \
-following requirements:
+                             Gtk.Label.new(_('Prerequisites')))
+        prerequisites = self.read_section('prerequisites', TEMPLATE)
+        self.boxDependencies.set_content(prerequisites)
 
-* If you install it from PPA don't worry about, becouse all the requirements \
-are included in the package
-* If you clone the repository, you need, at least, these dependecies,
-
-```
-```
-'''
-        self.boxDependencies.set_content(prerrequisites)
-
-        self.boxInstalling = BoxText(_('Installing:'))
+        self.boxInstalling = BoxText(_('Installing:'), True)
         notebook.append_page(self.boxInstalling,
                              Gtk.Label.new(_('Installing')))
-        installing = '''To install **${title}**, follow these steps:
-
-* In a terminal (`Ctrl+Alt+T`), run these commands
-
-```
-```
-'''
+        installing = self.read_section('installing', TEMPLATE)
         self.boxInstalling.set_content(installing)
 
-        self.boxInstalling = BoxText(_('Using:'))
-        notebook.append_page(self.boxInstalling,
+        self.boxUsing = BoxText(_('Using:'), True)
+        notebook.append_page(self.boxUsing,
                              Gtk.Label.new(_('Using')))
+        using = self.read_section('using', TEMPLATE)
+        self.boxUsing.set_content(using)
 
-        self.boxInstalling = BoxText(_('Contibuting:'))
-        notebook.append_page(self.boxInstalling,
+        self.boxContributing = BoxText(_('Contibuting:'), True)
+        notebook.append_page(self.boxContributing,
                              Gtk.Label.new(_('Contributing')))
+        contributing = self.read_section('contributing', TEMPLATE)
+        self.boxContributing.set_content(contributing)
 
-        self.boxInstalling = BoxText(_('Contributors:'))
-        notebook.append_page(self.boxInstalling,
-                             Gtk.Label.new(_('Contributing')))
+        self.boxContributors = BoxContributors(_('Contributors:'), True)
+        notebook.append_page(self.boxContributors,
+                             Gtk.Label.new(_('Contributors')))
+        contributors = self.read_section('contributors', TEMPLATE)
+        self.boxContributors.set_content(contributors)
+
+    def read_section(self, section_name, filename):
+        """Read a section
+
+        :section: section name
+        :returns: the section readed
+
+        """
+        section = ''
+        is_section = False
+        pattern_start = r'^<!--\s*start\s+{}\s*-->'.format(section_name)
+        pattern_end = r'<!--\s*end\s+{}\s*-->'.format(section_name)
+        if os.path.exists(filename):
+            with open(filename, 'r') as fr:
+                for line in fr.readlines():
+                    if re.match(pattern_end, line,
+                            flags=re.IGNORECASE):
+                        break
+                    if is_section:
+                        section += line
+                    if re.match(pattern_start, line,
+                            flags=re.IGNORECASE):
+                        is_section = True
+        return section
 
 
 if __name__ == '__main__':

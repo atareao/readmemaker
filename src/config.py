@@ -54,28 +54,26 @@ APPNAME = 'TodoTxt Indicator'
 
 # check if running from source
 if is_package():
-    ROOTDIR = '/opt/extras.ubuntu.com/readmemaker/share'
+    ROOTDIR = '/usr/share'
     LANGDIR = os.path.join(ROOTDIR, 'locale-langpack')
     APPDIR = os.path.join(ROOTDIR, APP)
+    TEMPLATEDIR = APPDIR
     CHANGELOG = os.path.join(APPDIR, 'changelog')
     ICONDIR = os.path.join(ROOTDIR, 'icons')
-    AUTOSTARTDIR = os.path.join(ROOTDIR, 'autostart')
 else:
     ROOTDIR = os.path.abspath(os.path.dirname(__file__))
     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
     APPDIR = ROOTDIR
+    TEMPLATEDIR = os.path.normpath(os.path.join(ROOTDIR, '../data'))
     DEBIANDIR = os.path.normpath(os.path.join(ROOTDIR, '../debian'))
     CHANGELOG = os.path.join(DEBIANDIR, 'changelog')
     ICONDIR = os.path.normpath(os.path.join(ROOTDIR,
                                             '../data/icons/64x64/apps'))
-    AUTOSTARTDIR = os.path.normpath(
-        os.path.join(ROOTDIR, '../data/autostart/'))
-AUTOSTART = os.path.join(AUTOSTARTDIR, 'readmemaker-autostart.desktop')
 ICON = os.path.join(ICONDIR, 'readmemaker.png')
+TEMPLATE = os.path.join(TEMPLATEDIR, 'template.md')
 
-f = open(CHANGELOG, 'r')
-line = f.readline()
-f.close()
+with open(CHANGELOG, 'r') as f:
+    line = f.readline()
 pos = line.find('(')
 posf = line.find(')', pos)
 VERSION = line[pos + 1:posf].strip()
