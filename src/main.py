@@ -46,6 +46,10 @@ from contributor import Contributor
 
 def generate_button(icon, tooltip_text, callback):
     button = Gtk.Button()
+    button.set_margin_start(10)
+    button.set_margin_end(10)
+    button.set_margin_top(10)
+    button.set_margin_bottom(10)
     button.set_tooltip_text(tooltip_text)
     button.set_image(Gtk.Image.new_from_gicon(Gio.ThemedIcon(
         name=icon), Gtk.IconSize.BUTTON))
@@ -165,7 +169,7 @@ class ReadmeMaker(BaseDialog):
         popover.add(grid)
 
         label = Gtk.Label.new(_('Open Readme'))
-        # label.set_haling(0)
+        label.set_halign(Gtk.Align.START)
         grid.attach(label, 0, 0, 1, 1)
 
         button_open = generate_button('gtk-open', _('Open Readme'),
@@ -173,16 +177,22 @@ class ReadmeMaker(BaseDialog):
         grid.attach(button_open, 1, 0, 1, 1)
 
         label = Gtk.Label.new(_('Save Readme'))
-        # label.set_haling(0)
+        label.set_halign(Gtk.Align.START)
         grid.attach(label, 0, 1, 1, 1)
 
         button_save = generate_button('gtk-save', _('Save Readme'),
                                       self.save_readme)
         grid.attach(button_save, 1, 1, 1, 1)
 
+        grid.attach(Gtk.Separator(), 0, 2, 2, 1)
 
-        button_exit = generate_button('gtk-exit', _('Exit'),
+        label = Gtk.Label.new(_('Exit'))
+        label.set_halign(Gtk.Align.START)
+        grid.attach(label, 0, 3, 1, 1)
+
+        button_exit = generate_button('gtk-quit', _('Exit'),
                                       self.exit_dialog)
+        grid.attach(button_exit, 1, 3, 1, 1)
 
         popover.show_all()
         popover.hide()
