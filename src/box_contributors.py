@@ -87,6 +87,7 @@ class BoxContributors(Gtk.Grid):
         box.add(button_add)
 
         button_edit = Gtk.Button.new_with_label(_('Edit contributor'))
+        button_edit.connect('clicked', self.on_button_edit_clicked)
         box.add(button_edit)
 
         button_remove = Gtk.Button.new_with_label(_('Remove contributor'))
@@ -101,6 +102,15 @@ class BoxContributors(Gtk.Grid):
             contributor = contributorDialog.get_contributor()
             self.contributors.add_item(contributor)
         contributorDialog.destroy()
+
+    def on_button_edit_clicked(self, widget):
+        selected = self.contributors.get_selected()
+        if selected:
+            contributorDialog = ContributorDialog(selected.get_contributor())
+            if contributorDialog.run() == Gtk.ResponseType.ACCEPT:
+                contributor = contributorDialog.get_contributor()
+                self.contributors.add_item(contributor)
+            contributorDialog.destroy()
 
 
     def get_content(self):
@@ -134,5 +144,5 @@ class BoxContributors(Gtk.Grid):
         :returns: TODO
 
         """
-        self.set_contributors(contributors)
+        self.contributors.add_all(contributors)
 

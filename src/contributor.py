@@ -24,7 +24,8 @@ class Contributor(object):
 
     """A contributor to the project"""
 
-    def __init__(self, nickname, name, role, avatar_url, url):
+    def __init__(self, nickname, name=None, role=None, avatar_url=None,
+                 url=None):
         """TODO: to be defined.
 
         :nickname: TODO

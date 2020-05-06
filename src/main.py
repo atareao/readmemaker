@@ -26,18 +26,32 @@
 import gi
 try:
     gi.require_version('Gtk', '3.0')
+    gi.require_version('Gio', '2.0')
 except Exception as e:
     print(e)
     exit(-1)
 from gi.repository import Gtk
+from gi.repository import Gio
 import re
 import os
+from bs4 import BeautifulSoup
 from config import _
 from config import TEMPLATE
 from basedialog import BaseDialog
 from box_general import BoxGeneral
 from box_text import BoxText
 from box_contributors import BoxContributors
+from contributor import Contributor
+
+
+def generate_button(icon, tooltip_text, callback):
+    button = Gtk.Button()
+    button.set_tooltip_text(tooltip_text)
+    button.set_image(Gtk.Image.new_from_gicon(Gio.ThemedIcon(
+        name=icon), Gtk.IconSize.BUTTON))
+    button.connect('clicked', callback)
+    return button
+
 
 class ReadmeMaker(BaseDialog):
 
@@ -91,8 +105,98 @@ class ReadmeMaker(BaseDialog):
         self.boxContributors = BoxContributors(_('Contributors:'), True)
         notebook.append_page(self.boxContributors,
                              Gtk.Label.new(_('Contributors')))
-        contributors = self.read_section('contributors', TEMPLATE)
-        self.boxContributors.set_content(contributors)
+        intro_contributors = self.read_section('contributors', TEMPLATE)
+        self.boxContributors.set_content(intro_contributors)
+        contributors = self.read_section('table-contributors', TEMPLATE)
+        soup = BeautifulSoup(contributors, 'html.parser')
+        for table in soup.findAll('table'):
+            if table['id'] == 'contributors':
+                columns = table.findAll('td')
+                rows = table.findAll('tr')
+                ncolumns = len(columns)
+                nrows = len(rows)
+                if ncolumns > 0 and nrows > 0 and ncolumns % nrows ==0:
+                    ncontributors = int(ncolumns/nrows)
+                pcontributors = {}
+                for row in rows:
+                    columns = row.findAll('td')
+                    for column in columns:
+                        if column['id'] and column['id'] not in pcontributors:
+                            pcontributors[column['id']] = Contributor(
+                                column['id'])
+                        if row['id'] == 'info_avatar':
+                            pcontributors[column['id']].set_url(
+                                column.a['href'])
+                            pcontributors[column['id']].set_avatar_url(
+                                column.a.img['src'])
+                        elif row['id'] == 'info_name':
+                            pcontributors[column['id']].set_name(
+                                column.a.get_text().strip())
+                        elif row['id'] == 'info_commit':
+                            pcontributors[column['id']].set_role(
+                                column.a.span.get_text())
+                self.boxContributors.set_contributors(pcontributors.values())
+                break
+        self.init_headbar()
+
+    def init_headbar(self):
+        hb = Gtk.HeaderBar()
+        hb.set_show_close_button(True)
+        hb.set_title(self.get_title())
+        self.set_titlebar(hb)
+
+        popover = self.create_popover()
+        button4 = Gtk.MenuButton()
+        button4.set_size_request(40, 40)
+        button4.set_tooltip_text(_('Options'))
+        button4.set_popover(popover)
+        button4.set_image(Gtk.Image.new_from_gicon(Gio.ThemedIcon(
+            name='pan-down-symbolic'), Gtk.IconSize.BUTTON))
+        hb.pack_end(button4)
+
+    def create_popover(self):
+        popover = Gtk.Popover()
+
+        grid = Gtk.Grid.new()
+        grid.set_margin_start(10)
+        grid.set_margin_end(10)
+        grid.set_margin_top(10)
+        grid.set_margin_bottom(10)
+        popover.add(grid)
+
+        label = Gtk.Label.new(_('Open Readme'))
+        # label.set_haling(0)
+        grid.attach(label, 0, 0, 1, 1)
+
+        button_open = generate_button('gtk-open', _('Open Readme'),
+                                      self.open_readme)
+        grid.attach(button_open, 1, 0, 1, 1)
+
+        label = Gtk.Label.new(_('Save Readme'))
+        # label.set_haling(0)
+        grid.attach(label, 0, 1, 1, 1)
+
+        button_save = generate_button('gtk-save', _('Save Readme'),
+                                      self.save_readme)
+        grid.attach(button_save, 1, 1, 1, 1)
+
+
+        button_exit = generate_button('gtk-exit', _('Exit'),
+                                      self.exit_dialog)
+
+        popover.show_all()
+        popover.hide()
+        return popover
+
+    def open_readme(self, widget):
+        pass
+
+    def save_readme(self, widget):
+        pass
+
+    def exit_dialog(self, widtgt):
+        exit(0)
+
 
     def read_section(self, section_name, filename):
         """Read a section

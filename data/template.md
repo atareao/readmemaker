@@ -109,7 +109,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 <!-- end contributors -->
 <!-- start table-contributors -->
-<table>
+<table id="contributors">
     <tr id="info_avatar">
         <td id="flachica" align="center">
             <a href="https://github.com/flachica">
@@ -136,12 +136,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr id="info_commit">
         <td id="flachica" align="center">
-            <a href="https://github.com/atareao/tasker/commits?author=flachica" title="Code">💻</a>
+            <a href="https://github.com/atareao/tasker/commits?author=flachica" title="Code"><span id="role" class="code">💻</a>
         </td>
-        <td id="atareo" align="center">
-            <a href="https://github.com/atareao/tasker/commits?author=atareao" title="Code">💻</a>
+        <td id="atareao" align="center">
+            <a href="https://github.com/atareao/tasker/commits?author=atareao" title="Code"><span id="role" class="code">💻</span></a>
         </td>
-    <tr>
+    </tr>
+</table>
+<table id="test">
 </table>
 <!-- end table-contributors -->
 

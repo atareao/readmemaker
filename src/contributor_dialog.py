@@ -47,10 +47,10 @@ class ContributorDialog(BaseDialog):
         self.contributor = contributor
         if contributor:
             self.nickname.set_text(self.contributor.get_nickname())
-            self.name.set_text(self.contributor.name())
-            self.url.set_text(self.contributor.url())
-            self.avatar_url.set_text(self.contributor.avatar_url())
-            self.role.set_text(self.contributor.role())
+            self.name.set_text(self.contributor.get_name())
+            self.url.set_text(self.contributor.get_url())
+            self.avatar_url.set_text(self.contributor.get_avatar_url())
+            select_in_combo(self.role, self.contributor.get_role())
         else:
             select_in_combo(self.role, -1)
 
@@ -94,12 +94,12 @@ class ContributorDialog(BaseDialog):
         self.grid.attach(label, 0, 5, 1, 1)
 
         role_store = Gtk.ListStore(str, str)
-        role_store.append([_('Bug reports'), 'bug'])
-        role_store.append([_('Code'), 'code'])
-        role_store.append([_('Design'), 'design'])
-        role_store.append([_('Documentation'), 'doc'])
-        role_store.append([_('Ideas'), 'ideas'])
-        role_store.append([_('Translation'), 'translation'])
+        role_store.append(['🐛 - {}'.format(_('Bug')), '🐛'])
+        role_store.append(['💻 - {}'.format(_('Code')), '💻'])
+        role_store.append(['🎨 - {}'.format(_('Design')), '🎨'])
+        role_store.append(['📖 - {}'.format(_('Documentation')), '📖'])
+        role_store.append(['🤔 - {}'.format(_('Ideas')), '🤔'])
+        role_store.append(['🌍 - {}'.format(_('Translation')), '🌍'])
         self.role = Gtk.ComboBox.new()
         self.role.set_model(role_store)
         cell1 = Gtk.CellRendererText()

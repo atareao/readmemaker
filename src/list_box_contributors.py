@@ -104,3 +104,10 @@ class ListBoxContributors(Gtk.ListBox):
             items.append(child.get_name())
         return items
 
+    def get_selected(self):
+        """TODO: Docstring for get_selected.
+        :returns: TODO
+
+        """
+        return self.get_selected_row()
+
