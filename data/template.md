@@ -5,17 +5,17 @@ github_project: https://github.com/atareao/tasker
 license: MIT
 icon: icon
 homepage: https://www.atareao.es
+license-badge: true
+contributors-badge: true
 -->
 <!-- end project-info -->
 
 <h1 align="center">Welcome to <span id="project_title"></span> 👋</h1>
 
-<!-- start license-badge -->
+<!-- start badges -->
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
-<!-- end license-badge -->
-<!-- start contributors-badge  -->
 ![Contributors](https://img.shields.io/github/contributors-anon/atareao/tasker)
-<!-- end contributors-badge -->
+<!-- end license-badge -->
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3e704c3f150404582cd23b9fcb4be32)](https://www.codacy.com/manual/atareao/tasker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/tasker&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/tasker/badge/master)](https://www.codefactor.io/repository/github/atareao/tasker/overview/master)
 
