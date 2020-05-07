@@ -7,6 +7,7 @@ icon: icon
 homepage: https://www.atareao.es
 license-badge: true
 contributors-badge: true
+codefactor-badge: true
 -->
 <!-- end project-info -->
 
@@ -15,11 +16,8 @@ contributors-badge: true
 <!-- start badges -->
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
 ![Contributors](https://img.shields.io/github/contributors-anon/atareao/tasker)
-<!-- end license-badge -->
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3e704c3f150404582cd23b9fcb4be32)](https://www.codacy.com/manual/atareao/tasker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/tasker&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/tasker/badge/master)](https://www.codefactor.io/repository/github/atareao/tasker/overview/master)
-
-[![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
+<!-- end badges -->
 
 <!-- start description -->
 <!-- end description -->
