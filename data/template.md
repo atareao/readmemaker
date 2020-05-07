@@ -7,6 +7,7 @@ icon: icon
 homepage: https://www.atareao.es
 license-badge: true
 contributors-badge: true
+lastcommit-badge: true
 codefactor-badge: true
 -->
 <!-- end project-info -->
@@ -16,6 +17,7 @@ codefactor-badge: true
 <!-- start badges -->
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
 ![Contributors](https://img.shields.io/github/contributors-anon/atareao/tasker)
+![Last commit](https://img.shields.io/github/last-commit/atareao/readmemaker)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/tasker/badge/master)](https://www.codefactor.io/repository/github/atareao/tasker/overview/master)
 <!-- end badges -->
 
