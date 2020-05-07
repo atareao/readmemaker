@@ -49,34 +49,26 @@ class BoxGeneral(Gtk.Grid):
         self.set_margin_end(10)
         self.set_margin_top(10)
 
-        label = Gtk.Label.new(_('Project name:'))
+        label = Gtk.Label.new(_('Project title:'))
         label.set_halign(Gtk.Align.START)
         label.set_margin_end(10)
         self.attach(label, 0, 0, 1, 1)
 
-        self.project_name = Gtk.Entry.new()
-        self.attach(self.project_name, 1, 0, 1, 1)
-
-        label = Gtk.Label.new(_('Package name:'))
-        label.set_halign(Gtk.Align.START)
-        label.set_margin_end(10)
-        self.attach(label, 0, 1, 1, 1)
-
-        self.package_name = Gtk.Entry.new()
-        self.attach(self.package_name, 1, 1, 1, 1)
+        self.project_title = Gtk.Entry.new()
+        self.attach(self.project_title, 1, 0, 1, 1)
 
         label = Gtk.Label.new(_('GitHub project'))
         label.set_halign(Gtk.Align.START)
         label.set_margin_end(10)
-        self.attach(label, 0, 2, 1, 1)
+        self.attach(label, 0, 1, 1, 1)
 
         self.github_project = Gtk.Entry.new()
-        self.attach(self.github_project, 1, 2, 1, 1)
+        self.attach(self.github_project, 1, 1, 1, 1)
 
         label = Gtk.Label.new(_('License:'))
         label.set_halign(Gtk.Align.START)
         label.set_margin_end(10)
-        self.attach(label, 0, 3, 1, 1) 
+        self.attach(label, 0, 2, 1, 1) 
 
         license_store = Gtk.ListStore(str, str)
         license_store.append([_('MIT'), 'MIT'])
@@ -86,14 +78,14 @@ class BoxGeneral(Gtk.Grid):
         cell1 = Gtk.CellRendererText()
         self.license.pack_start(cell1, True)
         self.license.add_attribute(cell1, 'text', 0)
-        self.attach(self.license, 1, 3, 1, 1)
+        self.attach(self.license, 1, 2, 1, 1)
 
         select_in_combo(self.license, 'MIT')
 
         label = Gtk.Label.new(_('Icon:'))
         label.set_halign(Gtk.Align.START)
         label.set_margin_end(10)
-        self.attach(label, 0, 4, 1, 1)
+        self.attach(label, 0, 3, 1, 1)
 
         iconfilter = Gtk.FileFilter.new()
         iconfilter.add_pattern('*.svg')
@@ -104,22 +96,22 @@ class BoxGeneral(Gtk.Grid):
         self.icon = Gtk.FileChooserButton.new(_('Icon'),
                                               Gtk.FileChooserAction.OPEN)
         self.icon.add_filter(iconfilter)
-        self.attach(self.icon, 1, 4, 1, 1)
+        self.attach(self.icon, 1, 3, 1, 1)
 
         label = Gtk.Label.new(_('Homepage:'))
         label.set_halign(Gtk.Align.START)
         label.set_margin_end(10)
-        self.attach(label, 0, 5, 1, 1)
+        self.attach(label, 0, 4, 1, 1)
 
         self.homepage = Gtk.Entry.new()
-        self.attach(self.homepage, 1, 5, 1, 1)
+        self.attach(self.homepage, 1, 4, 1, 1)
 
-    def get_project_name(self):
+    def get_project_title(self):
         """Get the name of the project
         :returns: the name of the project
 
         """
-        return self.project_name.get_text()
+        return self.project_title.get_text()
 
     def get_license(self):
         """Get license

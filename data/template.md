@@ -1,8 +1,21 @@
-<h1 align="center">Welcome to <span id="title"></span> 👋</h1>
+<!-- start project-info -->
+<!--
+project_title: Tasker
+github_project: https://github.com/atareao/tasker
+license: MIT
+icon: icon
+homepage: https://www.atareao.es
+-->
+<!-- end project-info -->
+
+<h1 align="center">Welcome to <span id="project_title"></span> 👋</h1>
 
 <!-- start license-badge -->
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
 <!-- end license-badge -->
+<!-- start contributors-badge  -->
+![Contributors](https://img.shields.io/github/contributors-anon/atareao/tasker)
+<!-- end contributors-badge -->
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3e704c3f150404582cd23b9fcb4be32)](https://www.codacy.com/manual/atareao/tasker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/tasker&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/tasker/badge/master)](https://www.codefactor.io/repository/github/atareao/tasker/overview/master)
 
@@ -33,9 +46,9 @@ gir1.2-keybinder-3.0
 <!-- end prerequisites -->
 
 <!-- start installing -->
-## Installing <span id="title">Title</span>
+## Installing <span id="project_title">Title</span>
 
-To install <span id="title">Title</span>, follow these steps:
+To install <span id="project_title">Title</span>, follow these steps:
 
 * In a terminal (`Ctrl+Alt+T`), run these commands
 
@@ -46,18 +59,18 @@ sudo apt install tasker
 ```
 <!-- end installing -->
 <!-- start using -->
-## Using <span id="title">Title</span>
+## Using <span id="project_title">Title</span>
 
-When you start <strong><span id="title">Title</span></strong> it goes to Indicator Area, as you can see in the next screenshot,
+When you start <strong><span id="project_title">Title</span></strong> it goes to Indicator Area, as you can see in the next screenshot,
 
 ![tasker](./screenshots/screenshot_01.png)
 
 In this screenshot, the language is Spanish, but, if there is no translation for your language, you will find the app in English.
 
-You can set some options in order to start  <strong><span id="title">Title</span></strong> when you start your Operative System.
+You can set some options in order to start  <strong><span id="project_title">Title</span></strong> when you start your Operative System.
 
 * Set the icon theme. Dark or light.
-* Start <span id="title">Title</span> with your Operative System
+* Start <span id="project_title">Title</span> with your Operative System
 * Set the number of tasks you want to show in the indicator menu
 * Set the tasks files. The file must follow the Todo.txt syntax.
 
@@ -91,9 +104,9 @@ In the next screenshots you can see some samples of my use of *tasker*,
 ![Example 2](./screenshots/screenshot_05.png)
 <!-- end using -->
 <!-- start contributing -->
-## Contributing to <span id="title">Title</span>
+## Contributing to <span id="project_title">Title</span>
 
-To contribute to **<span id="title">Title</span>**, follow these steps:
+To contribute to **<span id="project_title">Title</span>**, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
