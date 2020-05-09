@@ -79,39 +79,108 @@ class ReadmeMaker(BaseDialog):
         self.boxDescription = BoxText(_('Description:'), True)
         notebook.append_page(self.boxDescription,
                              Gtk.Label.new(_('Description')))
-        description = self.read_section('description', TEMPLATE)
-        self.boxDescription.set_content(description)
 
         self.boxDependencies = BoxText(_('Prerequisites:'), True)
         notebook.append_page(self.boxDependencies,
                              Gtk.Label.new(_('Prerequisites')))
-        prerequisites = self.read_section('prerequisites', TEMPLATE)
-        self.boxDependencies.set_content(prerequisites)
 
         self.boxInstalling = BoxText(_('Installing:'), True)
         notebook.append_page(self.boxInstalling,
                              Gtk.Label.new(_('Installing')))
-        installing = self.read_section('installing', TEMPLATE)
-        self.boxInstalling.set_content(installing)
 
         self.boxUsing = BoxText(_('Using:'), True)
         notebook.append_page(self.boxUsing,
                              Gtk.Label.new(_('Using')))
-        using = self.read_section('using', TEMPLATE)
-        self.boxUsing.set_content(using)
 
         self.boxContributing = BoxText(_('Contibuting:'), True)
         notebook.append_page(self.boxContributing,
                              Gtk.Label.new(_('Contributing')))
-        contributing = self.read_section('contributing', TEMPLATE)
-        self.boxContributing.set_content(contributing)
 
         self.boxContributors = BoxContributors(_('Contributors:'), True)
         notebook.append_page(self.boxContributors,
                              Gtk.Label.new(_('Contributors')))
-        intro_contributors = self.read_section('contributors', TEMPLATE)
+        self.init_headbar()
+
+    def init_headbar(self):
+        hb = Gtk.HeaderBar()
+        hb.set_show_close_button(True)
+        hb.set_title(self.get_title())
+        self.set_titlebar(hb)
+
+        self.popover = self.create_popover()
+        button4 = Gtk.MenuButton()
+        button4.set_size_request(40, 40)
+        button4.set_tooltip_text(_('Options'))
+        button4.set_popover(self.popover)
+        button4.set_image(Gtk.Image.new_from_gicon(Gio.ThemedIcon(
+            name='pan-down-symbolic'), Gtk.IconSize.BUTTON))
+        hb.pack_end(button4)
+
+    def create_popover(self):
+        popover = Gtk.Popover()
+
+        grid = Gtk.Grid.new()
+        grid.set_margin_start(10)
+        grid.set_margin_end(10)
+        grid.set_margin_top(10)
+        grid.set_margin_bottom(10)
+        popover.add(grid)
+
+        label = Gtk.Label.new(_('New Readme'))
+        label.set_halign(Gtk.Align.START)
+        grid.attach(label, 0, 0, 1, 1)
+
+        button_open = generate_button('gtk-new', _('New Readme'),
+                                      self.new_readme)
+        grid.attach(button_open, 1, 0, 1, 1)
+
+        grid.attach(Gtk.Separator(), 0, 1, 2, 1)
+
+        label = Gtk.Label.new(_('Open Readme'))
+        label.set_halign(Gtk.Align.START)
+        grid.attach(label, 0, 1, 1, 1)
+
+        button_open = generate_button('gtk-open', _('Open Readme'),
+                                      self.open_readme)
+        grid.attach(button_open, 1, 1, 1, 1)
+
+        label = Gtk.Label.new(_('Save Readme'))
+        label.set_halign(Gtk.Align.START)
+        grid.attach(label, 0, 2, 1, 1)
+
+        button_save = generate_button('gtk-save', _('Save Readme'),
+                                      self.save_readme)
+        grid.attach(button_save, 1, 2, 1, 1)
+
+        grid.attach(Gtk.Separator(), 0, 3, 2, 1)
+
+        label = Gtk.Label.new(_('Exit'))
+        label.set_halign(Gtk.Align.START)
+        grid.attach(label, 0, 4, 1, 1)
+
+        button_exit = generate_button('gtk-quit', _('Exit'),
+                                      self.exit_dialog)
+        grid.attach(button_exit, 1, 4, 1, 1)
+
+        popover.show_all()
+        popover.hide()
+        return popover
+
+    def read_file(self, filename):
+        # self.boxGeneral
+        description = self.read_section('description', filename)
+        self.boxDescription.set_content(description)
+        prerequisites = self.read_section('prerequisites', filename)
+        self.boxDependencies.set_content(prerequisites)
+        installing = self.read_section('installing', filename)
+        self.boxInstalling.set_content(installing)
+        using = self.read_section('using', filename)
+        self.boxUsing.set_content(using)
+        contributing = self.read_section('contributing', filename)
+        self.boxContributing.set_content(contributing)
+        intro_contributors = self.read_section('contributors', filename)
         self.boxContributors.set_content(intro_contributors)
-        contributors = self.read_section('table-contributors', TEMPLATE)
+        contributors = self.read_section('table-contributors', filename)
         soup = BeautifulSoup(contributors, 'html.parser')
         for table in soup.findAll('table'):
             if table['id'] == 'contributors':
@@ -141,70 +210,62 @@ class ReadmeMaker(BaseDialog):
                                 column.a.span.get_text())
                 self.boxContributors.set_contributors(pcontributors.values())
                 break
-        self.init_headbar()
 
-    def init_headbar(self):
-        hb = Gtk.HeaderBar()
-        hb.set_show_close_button(True)
-        hb.set_title(self.get_title())
-        self.set_titlebar(hb)
+    def new_readme(self, widget):
+        """TODO: Docstring for new_readme.
+        :returns: TODO
 
-        popover = self.create_popover()
-        button4 = Gtk.MenuButton()
-        button4.set_size_request(40, 40)
-        button4.set_tooltip_text(_('Options'))
-        button4.set_popover(popover)
-        button4.set_image(Gtk.Image.new_from_gicon(Gio.ThemedIcon(
-            name='pan-down-symbolic'), Gtk.IconSize.BUTTON))
-        hb.pack_end(button4)
-
-    def create_popover(self):
-        popover = Gtk.Popover()
-
-        grid = Gtk.Grid.new()
-        grid.set_margin_start(10)
-        grid.set_margin_end(10)
-        grid.set_margin_top(10)
-        grid.set_margin_bottom(10)
-        popover.add(grid)
-
-        label = Gtk.Label.new(_('Open Readme'))
-        label.set_halign(Gtk.Align.START)
-        grid.attach(label, 0, 0, 1, 1)
-
-        button_open = generate_button('gtk-open', _('Open Readme'),
-                                      self.open_readme)
-        grid.attach(button_open, 1, 0, 1, 1)
-
-        label = Gtk.Label.new(_('Save Readme'))
-        label.set_halign(Gtk.Align.START)
-        grid.attach(label, 0, 1, 1, 1)
-
-        button_save = generate_button('gtk-save', _('Save Readme'),
-                                      self.save_readme)
-        grid.attach(button_save, 1, 1, 1, 1)
-
-        grid.attach(Gtk.Separator(), 0, 2, 2, 1)
-
-        label = Gtk.Label.new(_('Exit'))
-        label.set_halign(Gtk.Align.START)
-        grid.attach(label, 0, 3, 1, 1)
-
-        button_exit = generate_button('gtk-quit', _('Exit'),
-                                      self.exit_dialog)
-        grid.attach(button_exit, 1, 3, 1, 1)
-
-        popover.show_all()
-        popover.hide()
-        return popover
+        """
+        self.read_file(TEMPLATE)
+        self.popover.hide()
 
     def open_readme(self, widget):
-        pass
+        dialog = Gtk.FileChooserDialog(_('Open File'), self,
+                                       Gtk.FileChooserAction.OPEN,
+                                       (Gtk.STOCK_CANCEL,
+                                        Gtk.ResponseType.CANCEL,
+                                        Gtk.STOCK_OK,
+                                        Gtk.ResponseType.ACCEPT))
+        filter_md = Gtk.FileFilter()
+        filter_md.set_name(_('Markdown files'))
+        filter_md.add_mime_type('text/plain')
+        dialog.add_filter(filter_md)
+        if dialog.run() == Gtk.ResponseType.ACCEPT:
+            self.read_file(dialog.get_filename())
+        dialog.destroy()
+        self.popover.hide()
 
     def save_readme(self, widget):
-        pass
+        dialog = Gtk.FileChooserDialog(_('Save File'), self,
+                                       Gtk.FileChooserAction.SAVE,
+                                       (Gtk.STOCK_CANCEL,
+                                        Gtk.ResponseType.CANCEL,
+                                        Gtk.STOCK_OK,
+                                        Gtk.ResponseType.ACCEPT))
+        filter_md = Gtk.FileFilter()
+        filter_md.set_name(_('Markdown files'))
+        filter_md.add_mime_type('text/plain')
+        dialog.add_filter(filter_md)
+        if dialog.run() == Gtk.ResponseType.ACCEPT:
+            filename = dialog.get_filename()
+            if os.path.exists(filename):
+                msg = _('The file exists, overwrite?')
+                msg_dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
+                                               Gtk.ButtonsType.OK_CANCEL,
+                                               msg)
+                if msg_dialog.run() == Gtk.ResponseType.OK:
+                    self.save_filename(filename)
+                msg_dialog.destroy()
+            else:
+                self.save_filename(filename)
+        dialog.destroy()
+        self.popover.hide()
+
+    def save_filename(self, filename):
+        print(filename)
 
     def exit_dialog(self, widtgt):
+        self.popover.hide()
         exit(0)
 
 

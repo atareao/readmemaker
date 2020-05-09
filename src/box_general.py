@@ -106,6 +106,42 @@ class BoxGeneral(Gtk.Grid):
         self.homepage = Gtk.Entry.new()
         self.attach(self.homepage, 1, 4, 1, 1)
 
+        label = Gtk.Label.new(_('License badge:'))
+        label.set_halign(Gtk.Align.START)
+        label.set_margin_end(10)
+        self.attach(label, 0, 5, 1, 1)
+
+        self.licencia_badge = Gtk.Switch.new()
+        self.licencia_badge.set_halign(Gtk.Align.START)
+        self.attach(self.licencia_badge, 1, 5, 1, 1)
+
+        label = Gtk.Label.new(_('Contributors badge:'))
+        label.set_halign(Gtk.Align.START)
+        label.set_margin_end(10)
+        self.attach(label, 0, 6, 1, 1)
+
+        self.contributors_badge = Gtk.Switch.new()
+        self.contributors_badge.set_halign(Gtk.Align.START)
+        self.attach(self.contributors_badge, 1, 6, 1, 1)
+
+        label = Gtk.Label.new(_('Last commit badge:'))
+        label.set_halign(Gtk.Align.START)
+        label.set_margin_end(10)
+        self.attach(label, 0, 7, 1, 1)
+
+        self.lastcommit_badge = Gtk.Switch.new()
+        self.lastcommit_badge.set_halign(Gtk.Align.START)
+        self.attach(self.lastcommit_badge, 1, 7, 1, 1)
+
+        label = Gtk.Label.new(_('CodeFactor badge:'))
+        label.set_halign(Gtk.Align.START)
+        label.set_margin_end(10)
+        self.attach(label, 0, 8, 1, 1)
+
+        self.codefactor_badge = Gtk.Switch.new()
+        self.codefactor_badge.set_halign(Gtk.Align.START)
+        self.attach(self.codefactor_badge, 1, 8, 1, 1)
+
     def get_project_title(self):
         """Get the name of the project
         :returns: the name of the project
