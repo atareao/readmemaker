@@ -90,12 +90,12 @@ class ListBoxContributors(Gtk.ListBox):
 
     def remove_item(self, contributor):
         for index, item in enumerate(self.get_children()):
-            if item.get_contributor() == contributor:
+            if item.get_contributor() == contributor.get_contributor():
                 self.remove(self.get_children()[index])
                 return
 
     def clear(self):
-        for index in range(len(self.get_children()) -1, -1):
+        for index in range(len(self.get_children()) -1, -1, -1):
             self.remove(self.get_children()[index])
 
     def get_items(self):
@@ -103,6 +103,16 @@ class ListBoxContributors(Gtk.ListBox):
         for child in self.get_children():
             items.append(child.get_name())
         return items
+
+    def get_contributors(self):
+        """TODO: Docstring for get_contributors.
+        :returns: TODO
+
+        """
+        contributors = []
+        for child in self.get_children():
+            contributors.append(child.get_contributor())
+        return contributors
 
     def get_selected(self):
         """TODO: Docstring for get_selected.

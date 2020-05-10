@@ -158,8 +158,7 @@ class BoxGeneral(Gtk.Grid):
         return get_selected_in_combo(self.license)
 
     def get_general_text(self):
-        text = '<!-- start project-info -->\n'
-        text += '<!--\n'
+        text = '<!--\n'
         text += 'project_title: {}\n'.format(self.project_title.get_text())
         text += 'github_project: {}\n'.format(self.github_project.get_text())
         license = get_selected_in_combo(self.license)
@@ -174,14 +173,13 @@ class BoxGeneral(Gtk.Grid):
         text += 'codefactor-badge: {}\n'.format(
                 self.codefactor_badge.get_active())
         text += '--->\n'
-        text += '<!-- end project-info -->'
         return text
 
     def get_badges(self):
         burl = 'https://img.shields.io'
-        text = '\n<!-- start badges -->'
         project = self.github_project.get_text().replace(
                 'https://github.com/', '')
+        text = ''
         if self.licencia_badge.get_active():
             license = get_selected_in_combo(self.license)
             license_badge = '![License {}]({})'.format(
@@ -201,7 +199,6 @@ class BoxGeneral(Gtk.Grid):
             cf_badge += '({url}/{project}/overview/master)'
             cf_badge = cf_badge.format(url=cd_url, project=project)
             text += '\n{}'.format(cf_badge)
-        text += '\n<!-- end badges -->'
         return text
 
     def set_license(self, license):
@@ -219,7 +216,7 @@ class BoxGeneral(Gtk.Grid):
         :returns: TODO
 
         """
-        self.homepage.get_text()
+        return self.homepage.get_text()
 
     def get_icon(self):
         """TODO: Docstring for get_icon.
@@ -233,4 +230,4 @@ class BoxGeneral(Gtk.Grid):
         :returns: TODO
 
         """
-        return self.github_project.get_test()
+        return self.github_project.get_text()

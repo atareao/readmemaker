@@ -1,17 +1,39 @@
-<h1 align="center">Welcome to Tasker 👋</h1>
 
-![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3e704c3f150404582cd23b9fcb4be32)](https://www.codacy.com/manual/atareao/tasker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/tasker&amp;utm_campaign=Badge_Grade)
-[![CodeFactor](https://www.codefactor.io/repository/github/atareao/tasker/badge/master)](https://www.codefactor.io/repository/github/atareao/tasker/overview/master)
+<!-- start project-info -->
+<!--
+project_title: Readme Maker
+github_project: https://github.com/atareao/readmemaker
+license: MIT
+icon: /datos/Sync/Programacion/Python/readmemaker/data/icons/scalable/apps/readmemaker.svg
+homepage: https://www.atareao.es/aplicacion/readmemaker
+license-badge: True
+contributors-badge: True
+lastcommit-badge: True
+codefactor-badge: True
+--->
 
-[![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
+<!-- end project-info -->
 
-tasker is an application to 
+<!-- start badges -->
 
-[![tasker](./data/icons/tasker.svg)](https://www.atareao.es/aplicacion/tasker/)
+![License MIT](https://img.shields.io/badge/license-MIT-green)
+![Contributors](https://img.shields.io/github/contributors-anon/atareao/readmemaker
+![Last commit](https://img.shields.io/github/last-commit/atareao/readmemaker
+[![CodeFactor](https://www.codefactor.io/repository/github/atareao/readmemaker/badge/master)](https://www.codefactor.io/repository/github/atareao/readmemaker/overview/master)
+<!-- end badges -->
 
-## 🏠 [Homepage](https://www.atareao.es/aplicacion/tasker/)
+<!-- start description -->
+<h1 align="center">Welcome to <span id="project_title">Readme Maker</span> 👋</h1>
+<p>
+<a href="https://www.atareao.es/aplicacion/readmemaker" id="homepage" rel="nofollow">
+<img id="icon" src="icons/scalable/apps/readmemaker.svg"/>
+</a>
+</p>
+<h2>🏠 <a href="https://www.atareao.es/aplicacion/readmemaker" id="homepage">Homepage</a></h2>
 
+<!-- end description -->
+
+<!-- start prerequisites -->
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
@@ -27,9 +49,12 @@ gir1.2-appindicator3-0.1
 gir1.2-keybinder-3.0
 ```
 
-## Installing Tasker
+<!-- end prerequisites -->
 
-To install **Tasker**, follow these steps:
+<!-- start installing -->
+## Installing <span id="project_title">Readme Maker</span>
+
+To install <span id="project_title">Readme Maker</span>, follow these steps:
 
 * In a terminal (`Ctrl+Alt+T`), run these commands
 
@@ -39,18 +64,21 @@ sudo apt update
 sudo apt install tasker
 ```
 
-## Using Tasker
+<!-- end installing -->
 
-When you start **Tasker** it goes to Indicator Area, as you can see in the next screenshot,
+<!-- start using -->
+## Using <span id="project_title">Readme Maker</span>
+
+When you start <strong><span id="project_title">Readme Maker</span></strong> it goes to Indicator Area, as you can see in the next screenshot,
 
 ![tasker](./screenshots/screenshot_01.png)
 
 In this screenshot, the language is Spanish, but, if there is no translation for your language, you will find the app in English.
 
-You can set some options in order to start *Tasker* when you start your Operative System.
+You can set some options in order to start  <strong><span id="project_title">Readme Maker</span></strong> when you start your Operative System.
 
 * Set the icon theme. Dark or light.
-* Start Tasker with your Operative System
+* Start <span id="project_title">Readme Maker</span> with your Operative System
 * Set the number of tasks you want to show in the indicator menu
 * Set the tasks files. The file must follow the Todo.txt syntax.
 
@@ -83,9 +111,12 @@ In the next screenshots you can see some samples of my use of *tasker*,
 
 ![Example 2](./screenshots/screenshot_05.png)
 
-## Contributing to Tasker
+<!-- end using -->
 
-To contribute to **Tasker**, follow these steps:
+<!-- start contributing -->
+## Contributing to <span id="project_title">Readme Maker</span>
+
+To contribute to **<span id="project_title">Readme Maker</span>**, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
@@ -94,22 +125,39 @@ To contribute to **Tasker**, follow these steps:
 5. Create the pull request.
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+</location></project_name></commit_message></branch_name>
+<!-- end contributing -->
 
+<!-- start contributors -->
 ## 👤 Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-<table>
-  <tr>
-    <td align="center"><a href="https://www.atareao.es"><img src="https://avatars3.githubusercontent.com/u/298055?v=4" width="100px;" alt=""/><br /><sub><b>Lorenzo Carbonell</b></sub></a><br /><a href="https://github.com/atareao/tasker/commits?author=atareao" title="Code">💻</a></td>
-  </tr>
+<!-- end contributors -->
+
+<!-- start table-contributors -->
+
+<table id="contributors">
+	<tr id="info_avatar">
+		<td id="atareao" align="center">
+			<a href="https://github.com/atareao">
+				<img src="https://avatars3.githubusercontent.com/u/298055?v=4" width="100px"/>
+			</a>
+		</td>
+	</tr>
+	<tr id="info_name">
+		<td id="atareao" align="center">
+			<a href="https://github.com/atareao">
+				<strong>Lorenzo</strong>
+			</a>
+		</td>
+	</tr>
+	<tr id="info_commit">
+		<td id="atareao" align="center">
+			<a href="/commits?author=atareao">
+				<span id="role">💻</span>
+			</a>
+		</td>
+	</tr>
 </table>
-
-
-## Contact
-
-If you want to contact me you can reach me at [atareao.es](https://www.atareao.es).
-
-## License
-
-This project uses the following license: [MIT License](https://choosealicense.com/licenses/mit/).
+<!-- end table-contributors -->

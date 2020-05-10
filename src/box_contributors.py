@@ -91,10 +91,20 @@ class BoxContributors(Gtk.Grid):
         box.add(button_edit)
 
         button_remove = Gtk.Button.new_with_label(_('Remove contributor'))
+        button_remove.connect('clicked', self.on_button_remove_clicked)
         box.add(button_remove)
 
         button_clear = Gtk.Button.new_with_label(_('Clear contributors'))
+        button_clear.connect('clicked', self.on_button_clear_clicked)
         box.add(button_clear)
+
+    def on_button_remove_clicked(self, widget):
+        selected = self.contributors.get_selected()
+        if selected:
+            self.contributors.remove_item(selected)
+
+    def on_button_clear_clicked(self, widget):
+        self.contributors.clear()
 
     def on_button_add_clicked(self, widget):
         contributorDialog = ContributorDialog()
@@ -145,4 +155,44 @@ class BoxContributors(Gtk.Grid):
 
         """
         self.contributors.add_all(contributors)
+
+    def get_table_contributors(self, github_project=''):
+        table = '\n<table id="contributors">'
+        table += '\n\t<tr id="info_avatar">'
+        for contributor in self.contributors.get_contributors():
+            #contributor = row_contributor.get_contributor()
+            print(contributor)
+            table += '\n\t\t<td id="{}" align="center">'.format(
+                    contributor.get_nickname())
+            table += '\n\t\t\t<a href="{}">'.format(
+                    contributor.get_url())
+            table += '\n\t\t\t\t<img src="{}" width="100px"/>'.format(
+                    contributor.get_avatar_url())
+            table += '\n\t\t\t</a>'
+            table += '\n\t\t</td>'
+        table += '\n\t</tr>'
+        table += '\n\t<tr id="info_name">'
+        for contributor in self.contributors.get_contributors():
+            table += '\n\t\t<td id="{}" align="center">'.format(
+                    contributor.get_nickname())
+            table += '\n\t\t\t<a href="{}">'.format(
+                    contributor.get_url())
+            table += '\n\t\t\t\t<strong>{}</strong>'.format(
+                    contributor.get_name())
+            table += '\n\t\t\t</a>'
+            table += '\n\t\t</td>'
+        table += '\n\t</tr>'
+        table += '\n\t<tr id="info_commit">'
+        for contributor in self.contributors.get_contributors():
+            table += '\n\t\t<td id="{}" align="center">'.format(
+                    contributor.get_nickname())
+            table += '\n\t\t\t<a href="{}/commits?author={}">'.format(
+                    github_project, contributor.get_nickname())
+            table += '\n\t\t\t\t<span id="role">{}</span>'.format(
+                    contributor.get_role())
+            table += '\n\t\t\t</a>'
+            table += '\n\t\t</td>'
+        table += '\n\t</tr>'
+        table += '\n</table>'
+        return table
 

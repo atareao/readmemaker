@@ -64,7 +64,7 @@ class ReadmeMaker(BaseDialog):
     def __init__(self):
         """TODO: to be defined. """
         BaseDialog.__init__(self, _('Readme Maker. Create README'), None,
-                            ok_button=True, cancel_button=True)
+                            ok_button=False, cancel_button=False)
         self.filename = None
 
     def init_ui(self):
@@ -178,31 +178,45 @@ class ReadmeMaker(BaseDialog):
     def on_button_update_clicked(self, widget):
         self.update_readme()
 
-    def update_content(self, content)
+    def update_content(self, content):
+        if self.filename:
+            origin = self.filename
+        else:
+            origin = TEMPLATE
         project_title = self.boxGeneral.get_project_title()
         homepage = self.boxGeneral.get_homepage()
-        icon = self.boxGeneral.get_icon()
+        icon = os.path.relpath(self.boxGeneral.get_icon(),
+                               os.path.dirname(origin))
         github_project = self.boxGeneral.get_github_project()
 
         content_soup = BeautifulSoup(content, 'html.parser')
         for span in content_soup.select('span[id]'):
             if span['id'] == 'project_title':
                 span.string = project_title
-        for tag_a in description_soup.select('a[id]'):
+        for tag_a in content_soup.select('a[id]'):
             if tag_a['id'] == 'homepage':
-                tag_a.href = homepage 
-        self.boxDescription.set_content(str(description_soup))
-        for tag_img in description_soup.select('img[id]'):
+                tag_a['href'] = homepage 
+        for tag_img in content_soup.select('img[id]'):
             if tag_img['id'] == 'icon':
-                tag_img.src = icon 
+                tag_img['src'] = icon 
         return str(content_soup)
 
     def update_readme(self):
         description = self.boxDescription.get_content()
         self.boxDescription.set_content(self.update_content(description))
+        prerequisites = self.boxDependencies.get_content()
+        self.boxDependencies.set_content(self.update_content(prerequisites))
+        installing = self.boxInstalling.get_content()
+        self.boxInstalling.set_content(self.update_content(installing))
+        using = self.boxUsing.get_content()
+        self.boxUsing.set_content(self.update_content(using))
+        contributing = self.boxContributing.get_content()
+        self.boxContributing.set_content(self.update_content(contributing))
+        intro_contributors = self.boxContributors.get_content()
+        self.boxContributors.set_content(self.update_content(
+            intro_contributors))
 
     def read_file(self, filename):
-        # self.boxGeneral
         general = self.read_section('project-info', filename)
         self.parse_general(general)
         description = self.read_section('description', filename)
@@ -308,7 +322,41 @@ class ReadmeMaker(BaseDialog):
 
     def save_filename(self, filename):
         origin = self.filename if self.filename else TEMPLATE
-        project_title = self.boxGeneral.get_project_title()
+        self.filename = filename
+        all_text = ''
+        all_text += '\n<!-- start project-info -->\n'
+        all_text += self.boxGeneral.get_general_text()
+        all_text += '\n<!-- end project-info -->\n'
+        all_text += '\n<!-- start badges -->\n'
+        all_text += self.boxGeneral.get_badges()
+        all_text += '\n<!-- end badges -->\n'
+        all_text += '\n<!-- start description -->\n'
+        all_text += self.boxDescription.get_content()
+        all_text += '\n<!-- end description -->\n'
+        all_text += '\n<!-- start prerequisites -->\n'
+        all_text += self.boxDependencies.get_content()
+        all_text += '\n<!-- end prerequisites -->\n'
+        all_text += '\n<!-- start installing -->\n'
+        all_text += self.boxInstalling.get_content()
+        all_text += '\n<!-- end installing -->\n'
+        all_text += '\n<!-- start using -->\n'
+        all_text += self.boxUsing.get_content()
+        all_text += '\n<!-- end using -->\n'
+        all_text += '\n<!-- start contributing -->\n'
+        all_text += self.boxContributing.get_content()
+        all_text += '\n<!-- end contributing -->\n'
+        all_text += '\n<!-- start contributors -->\n'
+        all_text += self.boxContributors.get_content()
+        all_text += '\n<!-- end contributors -->\n'
+        all_text += '\n<!-- start table-contributors -->\n'
+        all_text += self.boxContributors.get_table_contributors()
+        all_text += '\n<!-- end table-contributors -->\n'
+        with open(filename, 'w') as fw:
+            fw.write(all_text)
+
+    def save_filename2(self, filename):
+        origin = self.filename if self.filename else TEMPLATE
+        self.filename = filename
         with open(origin, 'r') as fr:
             self.update_readme()
             all_text = fr.read()
@@ -321,9 +369,26 @@ class ReadmeMaker(BaseDialog):
             all_text = self.replace_section(
                     'description', all_text,
                     self.boxDescription.get_content())
-            description = self.read_section('description', origin)
+            all_text = self.replace_section(
+                    'prerequisites', all_text,
+                    self.boxDependencies.get_content())
+            all_text = self.replace_section(
+                    'installing', all_text,
+                    self.boxInstalling.get_content())
+            all_text = self.replace_section(
+                    'using', all_text,
+                    self.boxUsing.get_content())
+            all_text = self.replace_section(
+                    'contributing', all_text,
+                    self.boxContributing.get_content())
+            all_text = self.replace_section(
+                    'contributors', all_text,
+                    self.boxContributors.get_content())
+            all_text = self.replace_section(
+                    'table-contributors', all_text,
+                    self.boxContributors.get_table_contributors())
             with open(filename, 'w') as fw:
-                fw.write(all_text)
+                fw.write(self.clean_between_sections(all_text))
 
     def exit_dialog(self, widtgt):
         self.popover.hide()
@@ -360,6 +425,22 @@ class ReadmeMaker(BaseDialog):
                 r'codefactor-badge:\strue$', info, re.M|re.I)
         self.boxGeneral.codefactor_badge.set_active(
                 True if codefactor_badge else False)
+
+    def clean_between_sections(self, text):
+        clean_text = []
+        is_section = False
+        pattern_start = r'^<!--\s*start\s+[^-]*-->'
+        pattern_end = r'<!--\s*end\s+[^-]*-->'
+        for line in text.split('\n'):
+            if re.match(pattern_start, line,
+                    flags=re.IGNORECASE):
+                is_section = True
+            if is_section:
+                clean_text.append(line)
+            if re.match(pattern_end, line,
+                    flags=re.IGNORECASE):
+                is_section = False
+        return '\n'.join(clean_text)
 
     def read_section(self, section_name, filename):
         """Read a section
@@ -404,7 +485,12 @@ class ReadmeMaker(BaseDialog):
                 before += '\n{}'.format(line)
             elif where == 'after':
                 after += '\n{}'.format(line)
-        return before + '\n' + new_text + '\n' + after 
+        result = before
+        result += '\n<!-- start {} -->\n'.format(section_name)
+        result += new_text
+        result += '\n<!-- end {} -->\n'.format(section_name)
+        result += after
+        return result
 
 
 def main():
