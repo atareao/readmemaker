@@ -186,11 +186,11 @@ class BoxGeneral(Gtk.Grid):
                 license, '{}/badge/license-{}-green'.format(burl, license))
             text += '\n{}'.format(license_badge)
         if self.contributors_badge.get_active():
-            c_badge = '![Contributors]({}/github/contributors-anon/{}'.format(
+            c_badge = '![Contributors]({}/github/contributors-anon/{})'.format(
                 burl, project)
             text += '\n{}'.format(c_badge)
         if self.lastcommit_badge.get_active():
-            lc_badge = '![Last commit]({}/github/last-commit/{}'.format(
+            lc_badge = '![Last commit]({}/github/last-commit/{})'.format(
                 burl, project)
             text += '\n{}'.format(lc_badge)
         if self.codefactor_badge.get_active():

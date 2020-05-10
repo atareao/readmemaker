@@ -17,8 +17,8 @@ codefactor-badge: True
 <!-- start badges -->
 
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
-![Contributors](https://img.shields.io/github/contributors-anon/atareao/readmemaker
-![Last commit](https://img.shields.io/github/last-commit/atareao/readmemaker
+![Contributors](https://img.shields.io/github/contributors-anon/atareao/readmemaker)
+![Last commit](https://img.shields.io/github/last-commit/atareao/readmemaker)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/readmemaker/badge/master)](https://www.codefactor.io/repository/github/atareao/readmemaker/overview/master)
 <!-- end badges -->
 
@@ -30,6 +30,7 @@ codefactor-badge: True
 </a>
 </p>
 <h2>🏠 <a href="https://www.atareao.es/aplicacion/readmemaker" id="homepage">Homepage</a></h2>
+
 
 <!-- end description -->
 
@@ -49,6 +50,7 @@ gir1.2-appindicator3-0.1
 gir1.2-keybinder-3.0
 ```
 
+
 <!-- end prerequisites -->
 
 <!-- start installing -->
@@ -63,6 +65,7 @@ sudo add-apt-repository ppa:atareao/atareao
 sudo apt update
 sudo apt install tasker
 ```
+
 
 <!-- end installing -->
 
@@ -111,6 +114,7 @@ In the next screenshots you can see some samples of my use of *tasker*,
 
 ![Example 2](./screenshots/screenshot_05.png)
 
+
 <!-- end using -->
 
 <!-- start contributing -->
@@ -126,12 +130,14 @@ To contribute to **<span id="project_title">Readme Maker</span>**, follow these 
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 </location></project_name></commit_message></branch_name>
+
 <!-- end contributing -->
 
 <!-- start contributors -->
 ## 👤 Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
 
 <!-- end contributors -->
 
