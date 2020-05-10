@@ -28,21 +28,9 @@ import os
 import locale
 import gettext
 
-PARAMS = {'stats': {},
-          'preferences': {'theme-light': True,
-                          'start-actived': True,
-                          'todos': 10,
-                          'todo-file': '~/.config/readmemaker/todo.txt',
-                          'projects': [],
-                          'contexts': [],
-                          'tags': []
-                          }
-          }
-
 CONFIG_DIR = os.path.join(os.path.expanduser('~'),
                           '.config/readmemaker')
 CONFIG_FILE = os.path.join(CONFIG_DIR, 'readmemaker.conf')
-DATA_FILE = os.path.join(CONFIG_DIR, 'readmemaker.data')
 
 
 def is_package():
@@ -50,7 +38,7 @@ def is_package():
 
 
 APP = 'readmemaker'
-APPNAME = 'TodoTxt Indicator'
+APPNAME = 'Readme Maker'
 
 # check if running from source
 if is_package():
@@ -74,9 +62,9 @@ TEMPLATE = os.path.join(TEMPLATEDIR, 'template.md')
 
 with open(CHANGELOG, 'r') as f:
     line = f.readline()
-pos = line.find('(')
-posf = line.find(')', pos)
-VERSION = line[pos + 1:posf].strip()
+posi = line.find('(') + 1
+posf = line.find(')', posi - 1)
+VERSION = line[posi:posf].strip()
 if not is_package():
     VERSION = VERSION + '-src'
 
@@ -84,7 +72,6 @@ try:
     current_locale, encoding = locale.getdefaultlocale()
     language = gettext.translation(APP, LANGDIR, [current_locale])
     language.install()
-    print(language)
     if sys.version_info[0] == 3:
         _ = language.gettext
     else:

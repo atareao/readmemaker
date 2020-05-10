@@ -104,6 +104,7 @@ class BoxGeneral(Gtk.Grid):
         self.attach(label, 0, 4, 1, 1)
 
         self.homepage = Gtk.Entry.new()
+        self.homepage.set_width_chars(50)
         self.attach(self.homepage, 1, 4, 1, 1)
 
         label = Gtk.Label.new(_('License badge:'))
@@ -154,8 +155,55 @@ class BoxGeneral(Gtk.Grid):
         :returns: TODO
 
         """
-        selected_license = get_selected_in_combo(self.license)
-        license = 'https://img.shields.io/badge/{}-{}-green'.format(
-                _('License'), selected_license)
-        return license
+        return get_selected_in_combo(self.license)
+
+    def get_general_text(self):
+        text = '<!-- start project-info -->\n'
+        text += '<!--\n'
+        text += 'project_title: {}\n'.format(self.project_title.get_text())
+        text += 'github_project: {}\n'.format(self.github_project.get_text())
+        license = get_selected_in_combo(self.license)
+        text += 'license: {}\n'.format(license)
+        text += 'icon: {}\n'.format(self.icon.get_filename())
+        text += 'homepage: {}\n'.format(self.homepage.get_text())
+        text += 'license-badge: {}\n'.format(self.licencia_badge.get_active())
+        text += 'contributors-badge: {}\n'.format(
+                self.codefactor_badge.get_active())
+        text += 'lastcommit-badge: {}\n'.format(
+                self.lastcommit_badge.get_active())
+        text += 'codefactor-badge: {}\n'.format(
+                self.codefactor_badge.get_active())
+        text += '--->\n'
+        text += '<!-- end project-info -->'
+        return text
+
+    def get_badges(self):
+        burl = 'https://img.shields.io'
+        text = '\n<!-- start badges -->'
+        project = self.github_project.get_text().replace(
+                'https://github.com/', '')
+        if self.licencia_badge.get_active():
+            license = selected_in_combo(self.license)
+            license_badge = '![License {}]({})'.format(
+                license, '{}/badge/license-{}-green'.format(burl, license))
+            text += '\n{}'.format(license_badge)
+        if self.contributors_badge.get_active():
+            c_badge = '![Contributors]({}/github/contributors-anon/{}'.format(
+                burl, project)
+            text += '\n{}'.format(c_badge)
+        if self.lastcommit_badge.get_active():
+            lc_badge = '![Last commit]({}/github/last-commit/{}'.format(
+                burl, project)
+            text += '\n{}'.format(lc_badge)
+        if self.codefactor_badge.get_active():
+            cd_url = 'https://www.codefactor.io/repository/github'
+            cf_badge = '[![CodeFactor]({url}/{project}/badge/master)]'
+            cf_badge += '({url}/{project}/overview/master)'
+            cf_badge = cf_badge.format(url=cd_url, project=project)
+            text += '\n{}'.format(cf_badge)
+        text += '\n<!-- end badges -->
+        return text
+
+    def set_license(self, license):
+        select_in_combo(self.license, license)
 

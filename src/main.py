@@ -168,6 +168,8 @@ class ReadmeMaker(BaseDialog):
 
     def read_file(self, filename):
         # self.boxGeneral
+        general = self.read_section('project-info', filename)
+        self.parse_general(general)
         description = self.read_section('description', filename)
         self.boxDescription.set_content(description)
         prerequisites = self.read_section('prerequisites', filename)
@@ -216,7 +218,14 @@ class ReadmeMaker(BaseDialog):
         :returns: TODO
 
         """
-        self.read_file(TEMPLATE)
+        user_folder = os.path.expanduser('~')
+        custom_template = os.path.join(user_folder, '.config', 'readmemaker',
+                                       'template.md')
+        if os.path.exists(custom_template):
+            template = custom_template
+        else:
+            template = TEMPLATE
+        self.read_file(template)
         self.popover.hide()
 
     def open_readme(self, widget):
@@ -263,11 +272,44 @@ class ReadmeMaker(BaseDialog):
 
     def save_filename(self, filename):
         print(filename)
+        with open(filename, 'w') as fw:
+            project_title = self.boxGeneral.project_title.get_text()
 
     def exit_dialog(self, widtgt):
         self.popover.hide()
         exit(0)
 
+    def parse_general(self, info):
+        project_title = re.search(r'project_title:\s*(.*)$', info, re.M|re.I)
+        if project_title:
+            self.boxGeneral.project_title.set_text(project_title.groups()[0])
+        github_project = re.search(r'github_project:\s*(.*)$', info, re.M|re.I)
+        if github_project:
+            self.boxGeneral.github_project.set_text(github_project.groups()[0])
+        license = re.search(r'license:\s*(.*)$', info, re.M|re.I)
+        if license:
+            self.boxGeneral.set_license(github_project.groups()[0])
+        icon = re.search(r'icon:\s*(.*)$', info, re.M|re.I)
+        if icon:
+            self.boxGeneral.icon.set_filename(icon.groups()[0])
+        homepage = re.search(r'homepage:\s*(.*)$', info, re.M|re.I)
+        if homepage:
+            self.boxGeneral.homepage.set_text(homepage.groups()[0])
+        license_badge = re.search(r'license-badge:\strue$', info, re.M|re.I)
+        self.boxGeneral.licencia_badge.set_active(
+                True if license_badge else False)
+        contributors_badge = re.search(
+                r'contributors-badge:\strue$', info, re.M|re.I)
+        self.boxGeneral.contributors_badge.set_active(
+                True if contributors_badge else False)
+        lastcommit_badge = re.search(
+                r'lastcommit-badge:\strue$', info, re.M|re.I)
+        self.boxGeneral.lastcommit_badge.set_active(
+                True if lastcommit_badge else False)
+        codefactor_badge = re.search(
+                r'codefactor-badge:\strue$', info, re.M|re.I)
+        self.boxGeneral.codefactor_badge.set_active(
+                True if codefactor_badge else False)
 
     def read_section(self, section_name, filename):
         """Read a section
@@ -292,6 +334,27 @@ class ReadmeMaker(BaseDialog):
                             flags=re.IGNORECASE):
                         is_section = True
         return section
+
+    def replace_section(self, section_name, all_text, new_text):
+        where = 'before' # before, section, after
+        before = ''
+        after = ''
+        pattern_start = r'^<!--\s*start\s+{}\s*-->'.format(section_name)
+        pattern_end = r'<!--\s*end\s+{}\s*-->'.format(section_name)
+        for line in all_text.split('\n'):
+            if re.match(pattern_end, line,
+                    flags=re.IGNORECASE):
+                where = 'after'
+                continue
+            if re.match(pattern_start, line,
+                    flags=re.IGNORECASE):
+                where = 'section'
+                continue
+            if where == 'before':
+                before += '\n{}'.line
+            elif where == 'after':
+                after += '\n{}'.line
+       return before + '\n' + new_text + '\n' + after 
 
 
 def main():
