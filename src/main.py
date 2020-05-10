@@ -65,6 +65,7 @@ class ReadmeMaker(BaseDialog):
         """TODO: to be defined. """
         BaseDialog.__init__(self, _('Readme Maker. Create README'), None,
                             ok_button=True, cancel_button=True)
+        self.filename = None
 
     def init_ui(self):
         BaseDialog.init_ui(self)
@@ -106,6 +107,14 @@ class ReadmeMaker(BaseDialog):
         hb.set_show_close_button(True)
         hb.set_title(self.get_title())
         self.set_titlebar(hb)
+
+        button1 = Gtk.Button()
+        button1.set_size_request(40, 40)
+        button1.set_tooltip_text(_('Update'))
+        button1.connect('clicked', self.on_button_update_clicked)
+        button1.set_image(Gtk.Image.new_from_gicon(Gio.ThemedIcon(
+            name='preferences-system-symbolic'), Gtk.IconSize.BUTTON))
+        hb.pack_start(button1)
 
         self.popover = self.create_popover()
         button4 = Gtk.MenuButton()
@@ -165,6 +174,32 @@ class ReadmeMaker(BaseDialog):
         popover.show_all()
         popover.hide()
         return popover
+
+    def on_button_update_clicked(self, widget):
+        self.update_readme()
+
+    def update_content(self, content)
+        project_title = self.boxGeneral.get_project_title()
+        homepage = self.boxGeneral.get_homepage()
+        icon = self.boxGeneral.get_icon()
+        github_project = self.boxGeneral.get_github_project()
+
+        content_soup = BeautifulSoup(content, 'html.parser')
+        for span in content_soup.select('span[id]'):
+            if span['id'] == 'project_title':
+                span.string = project_title
+        for tag_a in description_soup.select('a[id]'):
+            if tag_a['id'] == 'homepage':
+                tag_a.href = homepage 
+        self.boxDescription.set_content(str(description_soup))
+        for tag_img in description_soup.select('img[id]'):
+            if tag_img['id'] == 'icon':
+                tag_img.src = icon 
+        return str(content_soup)
+
+    def update_readme(self):
+        description = self.boxDescription.get_content()
+        self.boxDescription.set_content(self.update_content(description))
 
     def read_file(self, filename):
         # self.boxGeneral
@@ -240,6 +275,7 @@ class ReadmeMaker(BaseDialog):
         filter_md.add_mime_type('text/plain')
         dialog.add_filter(filter_md)
         if dialog.run() == Gtk.ResponseType.ACCEPT:
+            self.filename = dialog.get_filename()
             self.read_file(dialog.get_filename())
         dialog.destroy()
         self.popover.hide()
@@ -271,9 +307,23 @@ class ReadmeMaker(BaseDialog):
         self.popover.hide()
 
     def save_filename(self, filename):
-        print(filename)
-        with open(filename, 'w') as fw:
-            project_title = self.boxGeneral.project_title.get_text()
+        origin = self.filename if self.filename else TEMPLATE
+        project_title = self.boxGeneral.get_project_title()
+        with open(origin, 'r') as fr:
+            self.update_readme()
+            all_text = fr.read()
+            all_text = self.replace_section(
+                    'project-info', all_text,
+                    self.boxGeneral.get_general_text())
+            all_text = self.replace_section(
+                    'badges', all_text,
+                    self.boxGeneral.get_badges())
+            all_text = self.replace_section(
+                    'description', all_text,
+                    self.boxDescription.get_content())
+            description = self.read_section('description', origin)
+            with open(filename, 'w') as fw:
+                fw.write(all_text)
 
     def exit_dialog(self, widtgt):
         self.popover.hide()
@@ -351,10 +401,10 @@ class ReadmeMaker(BaseDialog):
                 where = 'section'
                 continue
             if where == 'before':
-                before += '\n{}'.line
+                before += '\n{}'.format(line)
             elif where == 'after':
-                after += '\n{}'.line
-       return before + '\n' + new_text + '\n' + after 
+                after += '\n{}'.format(line)
+        return before + '\n' + new_text + '\n' + after 
 
 
 def main():
@@ -365,7 +415,7 @@ def main():
     readmeMaker = ReadmeMaker()
     response = readmeMaker.run()
     if response == Gtk.ResponseType.ACCEPT:
-        print(readmeMaker.boxDescription.get_description())
+        print(readmeMaker.boxDescription.get_content())
         pass
     readmeMaker.destroy()
 

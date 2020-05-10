@@ -12,8 +12,6 @@ codefactor-badge: true
 -->
 <!-- end project-info -->
 
-<h1 align="center">Welcome to <span id="project_title"></span> 👋</h1>
-
 <!-- start badges -->
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
 ![Contributors](https://img.shields.io/github/contributors-anon/atareao/tasker)
@@ -22,11 +20,17 @@ codefactor-badge: true
 <!-- end badges -->
 
 <!-- start description -->
+<h1 align="center">Welcome to <span id="project_title"></span> 👋</h1>
+
+<p>
+    <a id="homepage" href="https://www.atareao.es/aplicacion/tasker/" rel="nofollow">
+        <img id="icon" src="/atareao/readmemaker/raw/master/data/icons/tasker.svg">
+    </a>
+</p>
+
+<h2>🏠 <a id="homepage" href="">Homepage</a></h2>
+
 <!-- end description -->
-
-[![tasker](${icon})](${homepage})
-
-## 🏠 [Homepage](${homepage})
 
 <!-- start prerequisites -->
 ## Prerequisites

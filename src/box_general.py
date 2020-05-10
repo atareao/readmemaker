@@ -183,7 +183,7 @@ class BoxGeneral(Gtk.Grid):
         project = self.github_project.get_text().replace(
                 'https://github.com/', '')
         if self.licencia_badge.get_active():
-            license = selected_in_combo(self.license)
+            license = get_selected_in_combo(self.license)
             license_badge = '![License {}]({})'.format(
                 license, '{}/badge/license-{}-green'.format(burl, license))
             text += '\n{}'.format(license_badge)
@@ -201,9 +201,36 @@ class BoxGeneral(Gtk.Grid):
             cf_badge += '({url}/{project}/overview/master)'
             cf_badge = cf_badge.format(url=cd_url, project=project)
             text += '\n{}'.format(cf_badge)
-        text += '\n<!-- end badges -->
+        text += '\n<!-- end badges -->'
         return text
 
     def set_license(self, license):
         select_in_combo(self.license, license)
 
+    def get_project_title(self):
+        """TODO: Docstring for get_project_title.
+        :returns: TODO
+
+        """
+        return self.project_title.get_text()
+
+    def get_homepage(self):
+        """TODO: Docstring for get_homepage.
+        :returns: TODO
+
+        """
+        self.homepage.get_text()
+
+    def get_icon(self):
+        """TODO: Docstring for get_icon.
+        :returns: TODO
+
+        """
+        return self.icon.get_filename()
+
+    def get_github_project(self):
+        """TODO: Docstring for get_github_project.
+        :returns: TODO
+
+        """
+        return self.github_project.get_test()
