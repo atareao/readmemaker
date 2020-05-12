@@ -47,7 +47,7 @@ if is_package():
     APPDIR = os.path.join(ROOTDIR, APP)
     TEMPLATEDIR = APPDIR
     CHANGELOG = os.path.join(APPDIR, 'changelog')
-    ICONDIR = os.path.join(ROOTDIR, 'icons')
+    ICONDIR = os.path.join(ROOTDIR, 'icons', 'hicolor', '64x64', 'apps')
 else:
     ROOTDIR = os.path.abspath(os.path.dirname(__file__))
     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
