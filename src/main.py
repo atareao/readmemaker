@@ -401,8 +401,8 @@ class ReadmeMaker(BaseDialog):
         github_project = re.search(r'github_project:\s*(.*)$', info, re.M|re.I)
         if github_project:
             self.boxGeneral.github_project.set_text(github_project.groups()[0])
-        license = re.search(r'license:\s*(.*)$', info, re.M|re.I)
-        if license:
+        selected_license = re.search(r'license:\s*(.*)$', info, re.M|re.I)
+        if selected_license:
             self.boxGeneral.set_license(github_project.groups()[0])
         icon = re.search(r'icon:\s*(.*)$', info, re.M|re.I)
         if icon:
@@ -502,7 +502,6 @@ def main():
     response = readmeMaker.run()
     if response == Gtk.ResponseType.ACCEPT:
         print(readmeMaker.boxDescription.get_content())
-        pass
     readmeMaker.destroy()
 
 
