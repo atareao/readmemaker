@@ -30,6 +30,7 @@ codefactor-badge: True
 </a>
 </p>
 <h2>🏠 <a href="https://www.atareao.es/aplicacion/readmemaker" id="homepage">Homepage</a></h2>
+<p>Readme Maker is a simple application to help you to make your README files</p>
 
 
 <!-- end description -->
@@ -51,6 +52,7 @@ gir1.2-keybinder-3.0
 ```
 
 
+
 <!-- end prerequisites -->
 
 <!-- start installing -->
@@ -63,8 +65,9 @@ To install <span id="project_title">Readme Maker</span>, follow these steps:
 ```
 sudo add-apt-repository ppa:atareao/atareao
 sudo apt update
-sudo apt install tasker
+sudo apt install readmemaker
 ```
+
 
 
 <!-- end installing -->
@@ -72,48 +75,39 @@ sudo apt install tasker
 <!-- start using -->
 ## Using <span id="project_title">Readme Maker</span>
 
-When you start <strong><span id="project_title">Readme Maker</span></strong> it goes to Indicator Area, as you can see in the next screenshot,
+When you start <strong><span id="project_title">Readme Maker</span></strong> it show the folloging dialog4
 
-![tasker](./screenshots/screenshot_01.png)
+In this main screen you can see 7 sections. First section is General, where you can fill the main parameters for your project. The Title of the project, the GitHub project, the license of the project, and others.
 
-In this screenshot, the language is Spanish, but, if there is no translation for your language, you will find the app in English.
+![readmemaker](./screenshots/readmemaker-screenshot-01.png)
 
-You can set some options in order to start  <strong><span id="project_title">Readme Maker</span></strong> when you start your Operative System.
+The second section is **description**, where you can introduce to the user the objective of your application. A short description.
 
-* Set the icon theme. Dark or light.
-* Start <span id="project_title">Readme Maker</span> with your Operative System
-* Set the number of tasks you want to show in the indicator menu
-* Set the tasks files. The file must follow the Todo.txt syntax.
+![readmemaker](./screenshots/readmemaker-screenshot-02.png)
 
-![Example 2](./screenshots/screenshot_06.png)
+The prerequisistes are in the third section where you must talk about the dependencies for your project.
 
-You can add so many projects as you need in the configuration dialog, as you can see in the next screenshot.
+![readmemaker](./screenshots/readmemaker-screenshot-03.png)
 
-![Example 2](./screenshots/screenshot_07.png)
+After that, in the four section, you must tell how to install your project, so the user can enjoy with it.
 
-Same, for contexts.
+![readmemaker](./screenshots/readmemaker-screenshot-04.png)
 
-![Example 2](./screenshots/screenshot_08.png)
+Maybe, the fifth section is the most important, becouse is the place where you tell how to use your proyect.
 
-You can add optional tags. Every tag can be or a string or a date. So you can add a *due* tag to set the date when the task must be completed or an *id* to save an special
+![readmemaker](./screenshots/readmemaker-screenshot-05.png)
 
+Another important section is the sixth section, where you specify how every one can contribute to this project
 
-![Example 2](./screenshots/screenshot_09.png)
+![readmemaker](./screenshots/readmemaker-screenshot-06.png)
 
-Besides you can set the colors of the graphics
+Y at last a mention for everyone that contributed to this project
 
-![Configuration](./screenshots/screenshot_02.png)
+![readmemaker](./screenshots/readmemaker-screenshot-07.png)
 
-In the next screenshot you can see the about
+The information about contributors from GitHub
 
-![About](./screenshots/screenshot_03.png)
-
-In the next screenshots you can see some samples of my use of *tasker*,
-
-![Example 1](./screenshots/screenshot_04.png)
-
-![Example 2](./screenshots/screenshot_05.png)
-
+![readmemaker](./screenshots/readmemaker-screenshot-08.png)
 
 <!-- end using -->
 
@@ -125,11 +119,12 @@ To contribute to **<span id="project_title">Readme Maker</span>**, follow these 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
 3. Make your changes and commit them: `git commit -m '<commit_message>'`
-4. Push to the original branch: `git push origin <project_name>/<location>`
+4. Push to the original branch: `git push origin atareao/readmemaker`
 5. Create the pull request.
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 </location></project_name></commit_message></branch_name>
+
 
 <!-- end contributing -->
 
@@ -137,6 +132,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 ## 👤 Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
 
 
 <!-- end contributors -->
