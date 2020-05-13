@@ -26,7 +26,7 @@ codefactor-badge: True
 <h1 align="center">Welcome to <span id="project_title">Readme Maker</span> 👋</h1>
 <p>
 <a href="https://www.atareao.es/aplicacion/readmemaker" id="homepage" rel="nofollow">
-<img id="icon" width="128" height="128" src="./data/icons/scalable/apps/readmemaker.svg"/>
+<img id="icon" width="64" height="64" align="right" src="./data/icons/scalable/apps/readmemaker.svg"/>
 </a>
 </p>
 <h2>🏠 <a href="https://www.atareao.es/aplicacion/readmemaker" id="homepage">Homepage</a></h2>
