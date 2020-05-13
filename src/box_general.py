@@ -161,8 +161,8 @@ class BoxGeneral(Gtk.Grid):
         text = '<!--\n'
         text += 'project_title: {}\n'.format(self.project_title.get_text())
         text += 'github_project: {}\n'.format(self.github_project.get_text())
-        license = get_selected_in_combo(self.license)
-        text += 'license: {}\n'.format(license)
+        selected_license = get_selected_in_combo(self.license)
+        text += 'license: {}\n'.format(selected_license)
         text += 'icon: {}\n'.format(self.icon.get_filename())
         text += 'homepage: {}\n'.format(self.homepage.get_text())
         text += 'license-badge: {}\n'.format(self.licencia_badge.get_active())
@@ -181,9 +181,9 @@ class BoxGeneral(Gtk.Grid):
                 'https://github.com/', '')
         text = ''
         if self.licencia_badge.get_active():
-            license = get_selected_in_combo(self.license)
+            selected_license = get_selected_in_combo(self.license)
             license_badge = '![License {}]({})'.format(
-                license, '{}/badge/license-{}-green'.format(burl, license))
+                selected_license, '{}/badge/license-{}-green'.format(burl, license))
             text += '\n{}'.format(license_badge)
         if self.contributors_badge.get_active():
             c_badge = '![Contributors]({}/github/contributors-anon/{})'.format(
@@ -201,8 +201,8 @@ class BoxGeneral(Gtk.Grid):
             text += '\n{}'.format(cf_badge)
         return text
 
-    def set_license(self, license):
-        select_in_combo(self.license, license)
+    def set_license(self, selected_license):
+        select_in_combo(self.license, selected_license)
 
     def get_project_title(self):
         """TODO: Docstring for get_project_title.
