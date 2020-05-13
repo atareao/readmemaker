@@ -136,5 +136,4 @@ if __name__ == '__main__':
     if contributorDialog.run() == Gtk.ResponseType.ACCEPT:
         contributor = contributorDialog.get_contributor()
         print(contributor)
-        pass
     contributorDialog.destroy()

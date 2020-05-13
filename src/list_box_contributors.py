@@ -120,4 +120,3 @@ class ListBoxContributors(Gtk.ListBox):
 
         """
         return self.get_selected_row()
-

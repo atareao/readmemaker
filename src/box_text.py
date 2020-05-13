@@ -87,4 +87,3 @@ class BoxText(Gtk.Grid):
 
         """
         self.content.get_buffer().set_text(content)
-

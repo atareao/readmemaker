@@ -76,4 +76,3 @@ class BoxDependencies(Gtk.Grid):
 
         """
         return self.project_name.get_text()
-

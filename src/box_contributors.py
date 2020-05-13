@@ -195,4 +195,3 @@ class BoxContributors(Gtk.Grid):
         table += '\n\t</tr>'
         table += '\n</table>'
         return table
-
