@@ -74,7 +74,9 @@ class ListBoxContributors(Gtk.ListBox):
         :returns: TODO
 
         """
-        return row1.get_contributor().get_nickname() > row2.get_contributor().get_nickname()
+        nickname1 = row1.get_contributor().get_nickname().lower()
+        nickname2 = row2.get_contributor().get_nickname().lower()
+        return nickname1 > nickname2
 
     def add_all(self, items):
         for item in items:

@@ -114,7 +114,10 @@ class ContributorDialog(BaseDialog):
             content = requests.get(url)
             if content.status_code == 200:
                 data = content.json()
-                self.name.set_text(data['name'])
+                if 'name' in data and data['name']:
+                    self.name.set_text(data['name'])
+                else:
+                    self.name.set_text(nickname)
                 self.url.set_text(data['html_url'])
                 self.avatar_url.set_text(data['avatar_url'])
 

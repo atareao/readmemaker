@@ -183,7 +183,8 @@ class BoxGeneral(Gtk.Grid):
         if self.licencia_badge.get_active():
             selected_license = get_selected_in_combo(self.license)
             license_badge = '![License {}]({})'.format(
-                selected_license, '{}/badge/license-{}-green'.format(burl, license))
+                selected_license,
+                '{}/badge/license-{}-green'.format(burl, selected_license))
             text += '\n{}'.format(license_badge)
         if self.contributors_badge.get_active():
             c_badge = '![Contributors]({}/github/contributors-anon/{})'.format(
