@@ -288,6 +288,8 @@ class ReadmeMaker(BaseDialog):
         filter_md.set_name(_('Markdown files'))
         filter_md.add_mime_type('text/plain')
         dialog.add_filter(filter_md)
+        if self.filename:
+            dialog.set_filename(self.filename)
         if dialog.run() == Gtk.ResponseType.ACCEPT:
             self.filename = dialog.get_filename()
             self.read_file(dialog.get_filename())
@@ -305,6 +307,8 @@ class ReadmeMaker(BaseDialog):
         filter_md.set_name(_('Markdown files'))
         filter_md.add_mime_type('text/plain')
         dialog.add_filter(filter_md)
+        if self.filename:
+            dialog.set_filename(self.filename)
         if dialog.run() == Gtk.ResponseType.ACCEPT:
             filename = dialog.get_filename()
             if os.path.exists(filename):
