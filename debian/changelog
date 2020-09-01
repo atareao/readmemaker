@@ -1,3 +1,9 @@
+readmemaker (0.1.2-0extras20.04.03) focal; urgency=medium
+
+  * Change Gtk.Dialog by Gtk.Window
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 01 Sep 2020 12:00:49 +0200
+
 readmemaker (0.1.1-0extras20.04.02) focal; urgency=medium
 
   * First version

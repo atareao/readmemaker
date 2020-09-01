@@ -26,14 +26,17 @@
 import gi
 try:
     gi.require_version('Gtk', '3.0')
+    gi.require_version('Gdk', '3.0')
     gi.require_version('Gio', '2.0')
 except Exception as e:
     print(e)
     exit(-1)
 from gi.repository import Gtk
+from gi.repository import Gdk
 from gi.repository import Gio
 import re
 import os
+import config
 from bs4 import BeautifulSoup
 from config import _
 from config import TEMPLATE
@@ -57,18 +60,25 @@ def generate_button(icon, tooltip_text, callback):
     return button
 
 
-class ReadmeMaker(BaseDialog):
+class ReadmeMaker(Gtk.Window):
 
     """Docstring for AddContextDialog. """
 
     def __init__(self):
         """TODO: to be defined. """
-        BaseDialog.__init__(self, _('Readme Maker. Create README'), None,
-                            ok_button=False, cancel_button=False)
+        Gtk.Window.__init__(self)
+        self.set_title(_('Readme Maker. Create README'))
         self.filename = None
+        self.set_icon_from_file(config.ICON)
+        self.connect('realize', self.on_realize)
+        self.connect('destroy', self.on_destroy)
+        self.init_ui()
+        self.show_all()
 
     def init_ui(self):
-        BaseDialog.init_ui(self)
+
+        self.grid = Gtk.Grid()
+        self.add(self.grid)
 
         notebook = Gtk.Notebook.new()
         self.grid.attach(notebook, 0, 0, 1, 1)
@@ -101,6 +111,18 @@ class ReadmeMaker(BaseDialog):
         notebook.append_page(self.boxContributors,
                              Gtk.Label.new(_('Contributors')))
         self.init_headbar()
+
+    def on_destroy(self, *_):
+        exit(0)
+
+    def on_realize(self, *_):
+        monitor = Gdk.Display.get_primary_monitor(Gdk.Display.get_default())
+        scale = monitor.get_scale_factor()
+        monitor_width = monitor.get_geometry().width / scale
+        monitor_height = monitor.get_geometry().height / scale
+        width = self.get_preferred_width()[0]
+        height = self.get_preferred_height()[0]
+        self.move((monitor_width - width)/2, (monitor_height - height)/2)
 
     def init_headbar(self):
         hb = Gtk.HeaderBar()
@@ -195,10 +217,10 @@ class ReadmeMaker(BaseDialog):
                 span.string = project_title
         for tag_a in content_soup.select('a[id]'):
             if tag_a['id'] == 'homepage':
-                tag_a['href'] = homepage 
+                tag_a['href'] = homepage
         for tag_img in content_soup.select('img[id]'):
             if tag_img['id'] == 'icon':
-                tag_img['src'] = icon 
+                tag_img['src'] = icon
         return str(content_soup)
 
     def update_readme(self):
@@ -502,12 +524,8 @@ def main():
     :returns: TODO
 
     """
-    readmeMaker = ReadmeMaker()
-    response = readmeMaker.run()
-    if response == Gtk.ResponseType.ACCEPT:
-        print(readmeMaker.boxDescription.get_content())
-    readmeMaker.destroy()
-
+    ReadmeMaker()
+    Gtk.main()
 
 if __name__ == '__main__':
     main()
